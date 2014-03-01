@@ -2,13 +2,12 @@ require 'mongoid'
 Mongoid.load!("./mongoid.yml")
 module BrandAid
   def self.make_type(plural, type: Array, &b)
-    x = Class.new do
+    Class.new do
       include Mongoid::Document
       field :use_guidelines, type: String
       field plural, type: Array
+      class_eval(&b) if b
     end
-    x.class_eval(&b) if b
-    return x
   end
   Logo = make_type :logos
   Color = make_type :color
