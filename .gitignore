@@ -1,8 +1,5 @@
 *.swp
 *~
-.#*#
-#*#
+*#*#
 node_modules
-blib/
-pm_to_blib
-*.exe
+js/*
