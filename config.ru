@@ -1,6 +1,6 @@
 require 'bundler/setup'
-require './lib/brandaid/app'
-require './lib/brandaid/ui'
+require 'brandaid/app'
+require 'brandaid/ui'
 
 map '/css' do
   run BrandAid::App
