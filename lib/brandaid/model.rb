@@ -5,7 +5,8 @@ module BrandAid
     extend self
     def rule items
       res = items[:head].join(", ") + " {\n"
-      res += items[:body].map do |k, v0|
+      res += items[:body].to_a.map do |p|
+        k, v0 = p
         v1 = v0.map do |v|
           "\"#{v}\""
         end
