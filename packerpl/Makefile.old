@@ -1,4 +1,4 @@
-# This Makefile is for the packerpl extension to perl.
+# This Makefile is for the packer extension to perl.
 #
 # It was generated automatically by MakeMaker version
 # 6.9 (Revision: 69000) from the contents of
@@ -53,8 +53,8 @@ VENDORLIBEXP = /usr/share/perl5
 AR_STATIC_ARGS = cr
 DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
-NAME = packerpl
-NAME_SYM = packerpl
+NAME = packer
+NAME_SYM = packer
 VERSION = 0.01
 VERSION_MACRO = VERSION
 VERSION_SYM = 0_01
@@ -141,8 +141,8 @@ MM_REVISION = 69000
 # PARENT_NAME = NAME without BASEEXT and no trailing :: (eg Foo::Bar)
 # DLBASE  = Basename part of dynamic library. May be just equal BASEEXT.
 MAKE = make
-FULLEXT = packerpl
-BASEEXT = packerpl
+FULLEXT = packer
+BASEEXT = packer
 PARENT_NAME = 
 DLBASE = $(BASEEXT)
 VERSION_FROM = 
@@ -260,8 +260,8 @@ CI = ci -u
 RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
-DISTNAME = packerpl
-DISTVNAME = packerpl-0.01
+DISTNAME = packer
+DISTVNAME = packer-0.01
 
 
 # --- MakeMaker macro section:
@@ -495,7 +495,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
 	$(NOECHO) $(ECHO) '  version: 1.4' >> META_new.yml
-	$(NOECHO) $(ECHO) 'name: packerpl' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: packer' >> META_new.yml
 	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
@@ -518,7 +518,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
 	$(NOECHO) $(ECHO) '      "version" : "2"' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "name" : "packerpl",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "packer",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
