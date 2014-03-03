@@ -6,6 +6,8 @@ gem 'thin', '~>1.6.1'
 gem 'mongoid', '~>3.1.6'
 gem 'multi_json', '~>1.8.4'
 
-env 'development' do
+group :development do
+  gem 'test-unit', '~>2.5.5'
+  gem 'test-unit-runner-tap', '~>1.0.0'
   gem 'shotgun'
 end
