@@ -14,7 +14,7 @@ module BrandAid
       end.join ""
       res += "}\n"
     end
-    def css t
+    def rules t
       res = ""
       t.map do |r|
         res += rule r

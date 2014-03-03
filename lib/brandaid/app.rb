@@ -6,7 +6,7 @@ module BrandAid
     get '/:brand.css' do |brand|
       brand = Session[:brands].find(name: brand).first
       content_type "text/css"
-      Css.css brand["rules"]
+      Css.rules brand["rules"]
     end
     get '/:brand' do |brand|
     end

@@ -5,8 +5,9 @@ class TestCss < MiniTest::Test
               [
                ['font-family', ["Helvetica", "Arial", "Droid Sans", "sans-serif"]],
               ]
-             }]
-    assert_equal BrandAid::Css.css(rules), <<"foo"
+             ]
+            ]
+    assert_equal BrandAid::Css.rules(rules), <<"foo"
 .primary {
 \tfont-family: "Helvetica", "Arial", "Droid Sans", "sans-serif";
 }
