@@ -31,7 +31,7 @@ module BrandAid
           pass
         end
       end
-      post '/:brand/' do |brand|
+      post '/:brand/?' do |brand|
         begin
           get_brand brand
           styles = @brand["styles"] ||= {}

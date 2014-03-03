@@ -1,1 +1,0 @@
-(function(){define("cssconv",["underscore"],function(d){var c,e;c={};e=c.rule=function(a){var b;b=a[0].join(", ")+" {\n";a=d.map(a[1],function(a){return"\t"+a[0]+": "+a[1].join(", ")+";\n"});b+=a.join("");return b+="}"};c.rules=function(a){return d.map(a,e).join("\n")};return c})}).call(this);

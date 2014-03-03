@@ -1,4 +1,4 @@
-define 'cssconv', ['underscore'], (_) ->
+define 'cssconv', ['bower_components/underscore/underscore'], (_) ->
   "use strict"
   module = {}
   rule = module.rule = (items) ->
