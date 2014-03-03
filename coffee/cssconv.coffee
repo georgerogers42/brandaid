@@ -1,4 +1,4 @@
-define ['underscore'], (_) ->
+define "cssconv", ['underscore'], (_) ->
   "use strict"
   module = {}
   rule = module.rule = (t) ->
