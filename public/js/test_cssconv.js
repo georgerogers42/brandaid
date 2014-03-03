@@ -1,0 +1,1 @@
+(function(){var b;b=require("requirejs");b.config({nodeRequire:require});b(["cssconv"],function(a){a=a.rules([[["h1"],[["font-family",['"Arial"',"sans-serif"]]]]]);if('h1 {\n\tfont-family: "Arial", sans-serif;\n}'===a)return console.log(a)})}).call(this);

@@ -5,20 +5,27 @@ module BrandAid
     extend self
     def rule items
       res = items[0].join(", ") + " {\n"
-      res += items[1].to_a.map do |p|
-        k, v0 = p
-        v1 = v0.map do |v|
-          "\"#{v}\""
-        end
-        "\t#{k}: #{v1.join(", ")};\n"
+      res += items[1].map do |p|
+        k, v = p
+        "\t#{k}: #{v.join(", ")};\n"
       end.join ""
       res += "}\n"
     end
     def rules t
-      res = ""
       t.map do |r|
-        res += rule r
+        rule r
       end.join("")
+    end
+  end
+  module ModelHelpers
+    private
+    def get_brand name
+      @brand = Session[:brands].find(name: name).first
+      @brand.delete "_id"
+      return @brand
+    end
+    def put_brand name
+      Session[:brands].find(name: name).update(@brand) 
     end
   end
 end
