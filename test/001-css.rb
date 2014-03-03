@@ -1,6 +1,7 @@
+
 require './lib/brandaid/app'
 class TestCss < MiniTest::Test
-  def test_to_css
+  def test_rules
     rules = [[[".primary"],
               [
                ['font-family', ["Helvetica", "Arial", "Droid Sans", "sans-serif"]],
