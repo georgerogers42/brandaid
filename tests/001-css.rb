@@ -7,7 +7,7 @@ class TestCss < MiniTest::Test
               ]
              }]
     assert_equal BrandAid::Css.css(rules), <<"foo"
-h1 {
+.primary {
 \tfont-family: "Helvetica", "Arial", "Droid Sans", "sans-serif";
 }
 foo
