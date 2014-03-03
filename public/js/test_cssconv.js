@@ -1,2 +1,1 @@
-
-(function(){var requirejs;requirejs=require('requirejs');requirejs.config({nodeRequire:require});requirejs(['cssconv'],function(css){return console.log(css.rules([[["h1"],[["font-family",["Arial","sans-serif"]]]]]));});}).call(this);
+(function(){(function(){var b;b=require("requirejs");b.config({nodeRequire:require});return b(["cssconv"],function(a){a=a.rules([[["h1"],[["font-family",['"Arial"',"sans-serif"]]]]]);if('h1 {\n\tfont-family: "Arial", sans-serif;\n}'===a)return console.log(a)})})()}).call(this);

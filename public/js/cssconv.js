@@ -1,2 +1,1 @@
-
-(function(){define('cssconv',['underscore'],function(_){"use strict";var module,rule,rules;module={};rule=module.rule=function(items){var r,res;res=items[0].join(", ")+"{\n";r=_.map(items[1],function(_arg){var k,v0,v1;k=_arg[0],v0=_arg[1];v1=_.map(v0,function(v){return"\""+v+"\"";});return"\t"+k+": "+(v1.join(", "))+";\n";});res+=r.join("");return res+="}";};rules=module.rules=function(t){return _.map(t,rule).join("\n");};return module;});}).call(this);
+(function(){define("cssconv",["underscore"],function(d){var c,e;c={};e=c.rule=function(a){var b;b=a[0].join(", ")+" {\n";a=d.map(a[1],function(a){return"\t"+a[0]+": "+a[1].join(", ")+";\n"});b+=a.join("");return b+="}"};c.rules=function(a){return d.map(a,e).join("\n")};return c})}).call(this);

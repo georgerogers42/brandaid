@@ -6,14 +6,11 @@
     module = {};
     rule = module.rule = function(items) {
       var r, res;
-      res = items[0].join(", ") + "{\n";
+      res = items[0].join(", ") + " {\n";
       r = _.map(items[1], function(_arg) {
-        var k, v0, v1;
-        k = _arg[0], v0 = _arg[1];
-        v1 = _.map(v0, function(v) {
-          return "\"" + v + "\"";
-        });
-        return "\t" + k + ": " + (v1.join(", ")) + ";\n";
+        var k, v;
+        k = _arg[0], v = _arg[1];
+        return "\t" + k + ": " + (v.join(", ")) + ";\n";
       });
       res += r.join("");
       return res += "}";

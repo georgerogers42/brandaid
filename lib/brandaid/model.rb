@@ -6,11 +6,8 @@ module BrandAid
     def rule items
       res = items[0].join(", ") + " {\n"
       res += items[1].map do |p|
-        k, v0 = p
-        v1 = v0.map do |v|
-          "\"#{v}\""
-        end
-        "\t#{k}: #{v1.join(", ")};\n"
+        k, v = p
+        "\t#{k}: #{v.join(", ")};\n"
       end.join ""
       res += "}\n"
     end

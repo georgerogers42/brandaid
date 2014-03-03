@@ -2,13 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.4.3)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.7.0)
+    closure-compiler (1.1.10)
     daemons (1.1.9)
     eventmachine (1.0.3)
-    execjs (2.0.2)
     json (1.8.1)
     kgio (2.9.2)
     minitap (0.5.3)
@@ -53,7 +49,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coffee-script (~> 2.2.0)
+  closure-compiler
   minitap (~> 0.5.3)
   moped (~> 1.5.2)
   multi_json (~> 1.8.4)
