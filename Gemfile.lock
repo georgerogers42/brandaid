@@ -2,8 +2,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.4.3)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.7.0)
     daemons (1.1.9)
     eventmachine (1.0.3)
+    execjs (2.0.2)
     json (1.8.1)
     kgio (2.9.2)
     minitap (0.5.3)
@@ -48,13 +53,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coffee-script (~> 2.2.0)
   minitap (~> 0.5.3)
   moped (~> 1.5.2)
   multi_json (~> 1.8.4)
-  rack-test
+  rack-test (~> 0.6.2)
   shotgun (~> 0.9)
   sinatra (~> 1.4.4)
   slim (~> 2.0.2)
   tapout (~> 0.4.5)
   thin (~> 1.6.1)
-  unicorn
+  unicorn (~> 4.8.2)
