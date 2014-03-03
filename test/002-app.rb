@@ -9,6 +9,10 @@ class BrandAid::TestApp < MiniTest::Test
   def test_audiotech
     get "/audiotech"
     resp = JSON.parse(last_response.body)
-    assert_equal resp["rules"], [[[".masthead"], [["font-family", ["serif"]]]]]
+    rules = resp["rules"]
+    assert_equal rules, [[[".masthead"], [["font-family", ["serif"]]]]]
+    get "/audiotech.css"
+    css = last_response.body
+    assert_equal BrandAid::Css.rules(rules), css
   end
 end
