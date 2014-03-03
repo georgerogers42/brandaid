@@ -7,7 +7,11 @@ module BrandAid
       res = items[0].join(", ") + " {\n"
       res += items[1].map do |p|
         k, v = p
-        "\t#{k}: #{v.join(", ")};\n"
+        if v.is_a? String
+          "\t#{k}: #{v};\n"
+        else
+          "\t#{k}: #{v.join(", ")};\n"
+        end
       end.join ""
       res += "}\n"
     end
