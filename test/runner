@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-$LOAD_PATH.push "lib"
+$LOAD_PATH.push("lib")
 require 'bundler/setup'
 require 'minitap/autorun'
 Minitest.reporter = Minitap::TapJ

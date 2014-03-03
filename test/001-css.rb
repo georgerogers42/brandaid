@@ -1,6 +1,5 @@
-
-require './lib/brandaid/app'
-class TestCss < MiniTest::Test
+require 'brandaid/app'
+class BrandAid::TestCss < MiniTest::Test
   def test_rules
     rules = [[[".primary"],
               [

@@ -5,8 +5,8 @@ gem 'slim', '~>2.0.2'
 gem 'thin', '~>1.6.1'
 gem 'moped', '~>1.5.2'
 gem 'multi_json', '~>1.8.4'
-gem 'rainbows'
-gem 'sleepy_penguin'
+gem 'unicorn'
+gem 'rack-test'
 
 group :development do
   gem 'minitap', '~>0.5.3'

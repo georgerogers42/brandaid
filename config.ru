@@ -1,4 +1,4 @@
-$LOAD_PATH.push "lib"
+$LOAD_PATH.push("lib")
 require 'bundler/setup'
 require 'brandaid/app'
 require 'brandaid/ui'
