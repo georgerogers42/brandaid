@@ -2,7 +2,8 @@ require 'bundler/setup'
 require './lib/brandaid/app'
 require './lib/brandaid/ui'
 
-map '/admin' do
-  run BrandAid::UI::App
+map '/css' do
+  run BrandAid::App
 end
-run BrandAid::App
+
+run BrandAid::UI::App
