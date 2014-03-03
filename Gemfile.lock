@@ -17,6 +17,8 @@ GEM
     moped (1.5.2)
     multi_json (1.8.4)
     rack (1.5.2)
+    rack-flash (0.1.2)
+      rack
     rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
@@ -44,6 +46,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -53,6 +57,7 @@ DEPENDENCIES
   minitap (~> 0.5.3)
   moped (~> 1.5.2)
   multi_json (~> 1.8.4)
+  rack-flash
   rack-test (~> 0.6.2)
   shotgun (~> 0.9)
   sinatra (~> 1.4.4)
@@ -60,3 +65,4 @@ DEPENDENCIES
   tapout (~> 0.4.5)
   thin (~> 1.6.1)
   unicorn (~> 4.8.2)
+  warden

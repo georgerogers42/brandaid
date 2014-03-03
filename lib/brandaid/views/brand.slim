@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Hello
+  body
+    form action=url("#{@brand["name"]}/") method="post"
+      p
+        input name="file" value="default"
+      p
+        textarea name="body"
+          = JSON.dump @brand["styles"]["default"]
+      p
+        input type="submit"
+    form action=url(@brand[:name], "js") method="post"
+      p
+        input name="file"
+      p
+        textarea name="body"
+      p
+        input type="submit"
+          

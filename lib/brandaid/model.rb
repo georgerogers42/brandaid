@@ -17,4 +17,15 @@ module BrandAid
       end.join("")
     end
   end
+  module ModelHelpers
+    private
+    def get_brand name
+      @brand = Session[:brands].find(name: name).first
+      @brand.delete "_id"
+      return @brand
+    end
+    def put_brand name
+      Session[:brands].find(name: name).update(@brand) 
+    end
+  end
 end

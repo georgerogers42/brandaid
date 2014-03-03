@@ -7,6 +7,8 @@ gem 'moped', '~>1.5.2'
 gem 'multi_json', '~>1.8.4'
 gem 'unicorn', '~>4.8.2'
 gem 'rack-test', '~>0.6.2'
+gem 'rack-flash'
+gem 'warden'
 
 group :development do
   gem 'closure-compiler'
