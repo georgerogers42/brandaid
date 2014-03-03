@@ -12,6 +12,6 @@ end
 
 task 'uglify' => ['coffee'] do
   Dir.glob("js/*.js").each do |f|
-    sh "uglifyjs  #{f} -o public/#{f}"
+    sh "jsmin < #{f} > public/#{f}"
   end
 end
