@@ -1,3 +1,3 @@
 task 'test' do
-  sh './tests/runner | tapout'
+  sh './test/runner | tapout'
 end
