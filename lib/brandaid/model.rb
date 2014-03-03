@@ -16,13 +16,9 @@ module BrandAid
     end
     def css t
       res = ""
-      t[:colors].each do |color|
-        res += rule color
-      end if t[:colors]
-      t[:fonts].each do |font|
-        res += rule font
-      end if t[:fonts]
-      return res
+      t[:rules].each do |r|
+        res += rule r
+      end
     end
   end
 end

@@ -2,11 +2,11 @@ require './lib/brandaid/app'
 class TestCss < MiniTest::Test
   def test_to_css
     assert_equal BrandAid::Css.css({
-      fonts: [{
+      rules: [{
                 head: ["h1"],
-                body: {
-                  'font-family' => ["Helvetica", "Arial", "Droid Sans", "sans-serif"],
-                },
+                body: [
+                       ['font-family', ["Helvetica", "Arial", "Droid Sans", "sans-serif"]],
+                      ]
               }]
     }), <<"foo"
 h1 {
