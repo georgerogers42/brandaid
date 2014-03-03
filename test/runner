@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
 require 'bundler/setup'
 require 'minitap/autorun'
+Minitest.reporter = Minitap::TapJ
+
+Dir.glob("./test/*.rb").each do |test|
+  require test
+end

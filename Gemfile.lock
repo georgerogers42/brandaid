@@ -1,18 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (3.2.17)
-      activesupport (= 3.2.17)
-      builder (~> 3.0.0)
-    activesupport (3.2.17)
-      i18n (~> 0.6, >= 0.6.4)
-      multi_json (~> 1.0)
     ansi (1.4.3)
-    builder (3.0.4)
     daemons (1.1.9)
     eventmachine (1.0.3)
-    i18n (0.6.9)
     json (1.8.1)
+    kgio (2.9.2)
     minitap (0.5.3)
       minitest (~> 5.0)
       minitest-reporter-api (>= 0.0.2)
@@ -20,17 +13,12 @@ GEM
     minitest (5.3.0)
     minitest-reporter-api (0.0.5)
       minitest (~> 5.0)
-    mongoid (3.1.6)
-      activemodel (~> 3.2)
-      moped (~> 1.4)
-      origin (~> 1.0)
-      tzinfo (~> 0.3.29)
     moped (1.5.2)
     multi_json (1.8.4)
-    origin (1.1.0)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
+    raindrops (0.13.0)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.4)
@@ -49,16 +37,21 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     tilt (1.4.1)
-    tzinfo (0.3.38)
+    unicorn (4.8.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitap
-  mongoid (~> 3.1.6)
+  minitap (~> 0.5.3)
+  moped (~> 1.5.2)
   multi_json (~> 1.8.4)
-  shotgun
+  shotgun (~> 0.9)
   sinatra (~> 1.4.4)
   slim (~> 2.0.2)
+  tapout (~> 0.4.5)
   thin (~> 1.6.1)
+  unicorn
