@@ -1,11 +1,11 @@
-require 'mongoid'
-Mongoid.load!("./mongoid.yml")
+require 'moped'
 module BrandAid
+  Session = Moped::Session.new(["localhost:27017"]).use(:brandaid)
   module Css
     extend self
     def rule items
-      res = items[:head].join(", ") + " {\n"
-      res += items[:body].to_a.map do |p|
+      res = items[0].join(", ") + " {\n"
+      res += items[1].to_a.map do |p|
         k, v0 = p
         v1 = v0.map do |v|
           "\"#{v}\""
@@ -16,9 +16,9 @@ module BrandAid
     end
     def css t
       res = ""
-      t[:rules].each do |r|
+      t.map do |r|
         res += rule r
-      end
+      end.join("")
     end
   end
 end
