@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'minitest/autorun'
+
+Dir.glob("./tests/*.rb").sort.each do |f|
+  require f
+end
+  
