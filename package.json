@@ -1,0 +1,27 @@
+{
+  "name": "brandaid",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "rake test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:georgerogers42/brandaid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgerogers42/brandaid/issues"
+  },
+  "homepage": "https://github.com/georgerogers42/brandaid"
+}
