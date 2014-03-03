@@ -11,5 +11,7 @@ task 'coffee' do
 end
 
 task 'uglify' => ['coffee'] do
-  sh "uglifyjs  js/*.js -o public/js/app.js"
+  Dir.glob("js/*.js").each do |f|
+    sh "uglifyjs  #{f} -o public/#{f}"
+  end
 end
