@@ -15,7 +15,6 @@ ruleset :
       result = [val[0], val[2]]
     }
 
-
 words :
     WORD {
       result = val
@@ -44,6 +43,9 @@ rules :
     @q = []
     until str.empty?
       case str
+      when /^("[^"]+"|'[^']+')/
+        @q.push [:WORD, $&]
+        str = $'
       when /^\s+/
         str = $'
       when /^(\w+\s*)+/

@@ -1,13 +1,17 @@
 require 'bundler/setup'
 require 'closure-compiler'
-task 'test' do
+task 'test' => ['racc'] do
   sh './test/runner | tapout'
 end
 
-task 'default' => ['test', 'uglify']
+task 'default' => ['racc', 'uglify', 'test']
 
 task 'coffee' do
   sh "coffee -m -o js -c coffee"
+end
+
+task 'racc' do
+  sh 'racc lib/**/*.y'
 end
 
 task 'uglify' => ['coffee'] do

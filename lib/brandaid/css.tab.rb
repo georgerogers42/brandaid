@@ -8,13 +8,16 @@ require 'racc/parser.rb'
 module BrandAid
   class CssParser < Racc::Parser
 
-module_eval(<<'...end css.y/module_eval...', 'css.y', 41)
+module_eval(<<'...end css.y/module_eval...', 'css.y', 40)
 
   def parse str
     str = str.strip
     @q = []
     until str.empty?
       case str
+      when /^("[^"]+"|'[^']+')/
+        @q.push [:WORD, $&]
+        str = $'
       when /^\s+/
         str = $'
       when /^(\w+\s*)+/
@@ -155,7 +158,7 @@ module_eval(<<'.,.,', 'css.y', 14)
   end
 .,.,
 
-module_eval(<<'.,.,', 'css.y', 20)
+module_eval(<<'.,.,', 'css.y', 19)
   def _reduce_4(val, _values, result)
           result = val
     
@@ -163,7 +166,7 @@ module_eval(<<'.,.,', 'css.y', 20)
   end
 .,.,
 
-module_eval(<<'.,.,', 'css.y', 23)
+module_eval(<<'.,.,', 'css.y', 22)
   def _reduce_5(val, _values, result)
           result.push val[2]
     
@@ -171,7 +174,7 @@ module_eval(<<'.,.,', 'css.y', 23)
   end
 .,.,
 
-module_eval(<<'.,.,', 'css.y', 28)
+module_eval(<<'.,.,', 'css.y', 27)
   def _reduce_6(val, _values, result)
           result = [val[0], val[2]]
     
@@ -179,7 +182,7 @@ module_eval(<<'.,.,', 'css.y', 28)
   end
 .,.,
 
-module_eval(<<'.,.,', 'css.y', 33)
+module_eval(<<'.,.,', 'css.y', 32)
   def _reduce_7(val, _values, result)
           result.push val[1]
     
@@ -187,7 +190,7 @@ module_eval(<<'.,.,', 'css.y', 33)
   end
 .,.,
 
-module_eval(<<'.,.,', 'css.y', 36)
+module_eval(<<'.,.,', 'css.y', 35)
   def _reduce_8(val, _values, result)
           result = []
   
