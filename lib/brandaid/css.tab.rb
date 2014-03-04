@@ -15,12 +15,11 @@ module_eval(<<'...end css.y/module_eval...', 'css.y', 40)
     @q = []
     until str.empty?
       case str
-      when /^("[^"]+"|'[^']+')/
-        @q.push [:WORD, $&]
-        str = $'
       when /^\s+/
         str = $'
-      when /^(\w+\s*)+/
+      when /^"(?:[^"\\]|\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4}))*"/,
+            /^'(?:[^'\\]|\\(?:['\\\/bfnrt]|u[0-9a-fA-F]{4}))*'/,
+            /^(\w+\s*)+/
         @q.push [:WORD, $&]
         str = $'
       else

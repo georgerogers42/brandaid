@@ -1,3 +1,4 @@
+require 'brandaid/css.tab'
 require 'slim'
 module BrandAid
   module UI
@@ -26,6 +27,9 @@ module BrandAid
           pass
         end
       end
+      post '/to-cson' do
+        JSON.dump BrandAid::CssParser.new.parse(params[:body])
+      end
       post '/:brand/?' do |brand|
         get_brand brand
         json = JSON.parse params[:body]
@@ -41,7 +45,6 @@ module BrandAid
           scripts = @brand["scripts"] ||= {}
           scripts[params[:file]] = params[:body]
           put_brand brand
-          # flash "Script #{params[:file]} has been created/updated"
         ensure
           redirect url brand
         end

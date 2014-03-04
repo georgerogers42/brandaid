@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'closure-compiler'
 task 'test' => ['racc'] do
-  sh './test/runner | tapout'
+  sh 'prove'
 end
 
 task 'default' => ['racc', 'uglify', 'test']
