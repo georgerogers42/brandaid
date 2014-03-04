@@ -1,6 +1,9 @@
 require 'moped'
 module BrandAid
-  Session = Moped::Session.new(["localhost:27017"]).use(:brandaid)
+  extend self
+  def Session
+    Moped::Session.new(["localhost:27017"]).use(:brandaid)
+  end
   module Css
     extend self
     def rule items
@@ -9,8 +12,10 @@ module BrandAid
         k, v = p
         if v.is_a? String
           "\t#{k}: #{v};\n"
-        else
+        elsif v.is_a? Array
           "\t#{k}: #{v.join(", ")};\n"
+        else
+          throw ArgumentError
         end
       end.join ""
       res += "}\n"
@@ -19,15 +24,28 @@ module BrandAid
       t.map do |r|
         rule r
       end.join("")
+    rescue => e
+      e
     end
   end
   module ModelHelpers
     private
+    def session
+      @session ||= BrandAid.Session
+    end
     def get_brand name
-      @brand = Session[:brands].find(name: name).first
+      @brand = session[:brands].find(name: name).first
     end
     def put_brand name
-      Session[:brands].find(name: name).update(@brand) 
+      session[:brands].find(name: name).update(@brand) 
+    end
+    def create_brand name
+      brand = {
+        name: name,
+        scripts: {},
+        styles: {}
+      }
+      BrandAid.Session[:brands].insert(brand)
     end
   end
 end

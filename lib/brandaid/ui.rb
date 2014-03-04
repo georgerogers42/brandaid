@@ -8,12 +8,7 @@ module BrandAid
       end
       post "/" do
         begin
-          brand = {
-            name: params[:name],
-            scripts: {},
-            styles: {}
-          }
-          BrandAid::Session[:brands].insert(brand)
+          create_brand params[:name]
         ensure
           redirect url(params[:name])
         end
@@ -32,15 +27,13 @@ module BrandAid
         end
       end
       post '/:brand/?' do |brand|
-        begin
-          get_brand brand
-          styles = @brand["styles"] ||= {}
-          styles[params[:file]] = JSON.parse params[:body]
-          # flash "Style #{params[:file]} has been created/updated"
-          put_brand brand
-        ensure
-          redirect url brand
-        end
+        get_brand brand
+        json = JSON.parse params[:body]
+        Css.rules json.clone
+        styles = @brand["styles"] ||= {}
+        styles[params[:file]] = json
+        put_brand brand
+        "Style #{params[:file]} has been created/updated"
       end
       post '/:brand/js' do |brand|
         begin

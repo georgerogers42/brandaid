@@ -4,7 +4,7 @@ task 'test' do
   sh './test/runner | tapout'
 end
 
-task 'default' => ['uglify']
+task 'default' => ['test', 'uglify']
 
 task 'coffee' do
   sh "coffee -m -o js -c coffee"
