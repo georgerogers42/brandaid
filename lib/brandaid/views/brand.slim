@@ -5,6 +5,7 @@ html
     link rel="stylesheet" href="/brandaid.css" 
   body
     input#styles type="hidden" value="#{JSON.dump @brand['styles']}"
+    input#appRoot type="hidden" value=url
     pre#stylesheet
     form#styleEditor action=url("#{@brand["name"]}/") method="post"
       p
@@ -12,9 +13,7 @@ html
       p#jsonEditor
       p
         input type="submit"
-    form action=url(@brand[:name], "js") method="post"
-      p
-        input name="file"
+    form#parseCson method="post" action=url("#{@brand['name']}/to/cson")
       p
         textarea name="body"
       p

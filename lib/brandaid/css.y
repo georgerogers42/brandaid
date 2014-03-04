@@ -11,30 +11,38 @@ rulesets :
     }
 
 ruleset :
-    words '{' rules '}' {
+    words '{' rs '}' {
       result = [val[0], val[2]]
     }
 
+word :
+    word WORD {
+      result << " " + val[1]
+    }
+  | WORD {
+      result = val[0]
+    }
+
 words :
-    WORD {
+    word {
       result = val
     }
-  | words ',' WORD {
+  | words ',' word {
       result.push val[2]
     }
 
-rule :
+r :
     WORD ':' words ';' {
       result = [val[0], val[2]]
     }
 
-rules : 
-    rules rule {
+rs :
+    rs r {
       result.push val[1]
     }
   | {
       result = []
-  }
+    }
 
 ---- inner
 
@@ -43,11 +51,9 @@ rules :
     @q = []
     until str.empty?
       case str
-      when /^\s+/
+      when /\A(\s)+/
         str = $'
-      when /^"(?:[^"\\]|\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4}))*"/,
-            /^'(?:[^'\\]|\\(?:['\\\/bfnrt]|u[0-9a-fA-F]{4}))*'/,
-            /^(\w+\s*)+/
+      when /\A[-A-Za-z0-9#.<]+/, /\A"[^"]*"/, /\A'[^']'/
         @q.push [:WORD, $&]
         str = $'
       else

@@ -15,6 +15,19 @@
       e.set(json);
       $("pre#stylesheet").text(css.rules(json));
       $("p#jsonEditor").append(x);
+      $("form#parseCson").on("submit", function(evt) {
+        var data, req;
+        data = {
+          body: $(this).find('input[name="body"]').val()
+        };
+        req = $.ajax("to/cson", {
+          data: data,
+          type: "post"
+        });
+        return req.done(function(data) {
+          return e.set(data);
+        });
+      });
       return $("form#styleEditor").on("submit", function(evt) {
         var data, req;
         evt.preventDefault();

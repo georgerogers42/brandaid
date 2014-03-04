@@ -7,7 +7,10 @@
     rule = module.rule = function(items) {
       var r, res, x;
       res = items[0].join(", ") + " {\n";
-      x = _.pairs(items[1]);
+      x = items[1];
+      if (!_.isArray(x)) {
+        x = _.pairs(x);
+      }
       r = _.map(x, function(_arg) {
         var k, v;
         k = _arg[0], v = _arg[1];

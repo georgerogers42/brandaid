@@ -8,18 +8,16 @@ require 'racc/parser.rb'
 module BrandAid
   class CssParser < Racc::Parser
 
-module_eval(<<'...end css.y/module_eval...', 'css.y', 40)
+module_eval(<<'...end css.y/module_eval...', 'css.y', 48)
 
   def parse str
     str = str.strip
     @q = []
     until str.empty?
       case str
-      when /^\s+/
+      when /\A(\s)+/
         str = $'
-      when /^"(?:[^"\\]|\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4}))*"/,
-            /^'(?:[^'\\]|\\(?:['\\\/bfnrt]|u[0-9a-fA-F]{4}))*'/,
-            /^(\w+\s*)+/
+      when /\A[-A-Za-z0-9#.<]+/, /\A"[^"]*"/, /\A'[^']'/
         @q.push [:WORD, $&]
         str = $'
       else
@@ -37,49 +35,51 @@ module_eval(<<'...end css.y/module_eval...', 'css.y', 40)
 ##### State transition tables begin ###
 
 racc_action_table = [
-     2,     8,     7,    16,     5,     8,    11,    12,    14,     6,
-     5,    10 ]
+     2,     9,     8,    18,     6,     9,    13,    14,    10,     7,
+     6,    16,     6,    10 ]
 
 racc_action_check = [
-     1,    15,     4,    15,     1,     4,     9,     9,    12,     2,
-    14,     8 ]
+     1,    17,     4,    17,     1,     4,    11,    11,    12,     2,
+     9,    14,    16,     5 ]
 
 racc_action_pointer = [
-   nil,     0,     9,   nil,     0,   nil,   nil,   nil,     7,     3,
-   nil,   nil,     2,   nil,     6,    -4,   nil ]
+   nil,     0,     9,   nil,     0,     9,   nil,   nil,   nil,     6,
+   nil,     3,     4,   nil,     5,   nil,     8,    -4,   nil ]
 
 racc_action_default = [
-    -2,    -9,    -9,    -1,    -9,    -4,    17,    -8,    -9,    -9,
-    -5,    -3,    -9,    -7,    -9,    -9,    -6 ]
+    -2,   -11,   -11,    -1,   -11,    -6,    -5,    19,   -10,   -11,
+    -4,   -11,    -7,    -3,   -11,    -9,   -11,   -11,    -8 ]
 
 racc_goto_table = [
-     4,     1,     3,     9,    13,   nil,   nil,   nil,   nil,   nil,
-   nil,   nil,   nil,    15 ]
+     4,    11,     1,     3,    12,    15,   nil,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil,   nil,    17 ]
 
 racc_goto_check = [
-     3,     1,     2,     4,     5,   nil,   nil,   nil,   nil,   nil,
-   nil,   nil,   nil,     3 ]
+     3,     4,     1,     2,     5,     6,   nil,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil,   nil,     3 ]
 
 racc_goto_pointer = [
-   nil,     1,     1,    -1,    -4,    -5 ]
+   nil,     2,     2,    -1,    -7,    -5,    -6 ]
 
 racc_goto_default = [
-   nil,   nil,   nil,   nil,   nil,   nil ]
+   nil,   nil,   nil,   nil,   nil,     5,   nil ]
 
 racc_reduce_table = [
   0, 0, :racc_error,
   2, 9, :_reduce_1,
   0, 9, :_reduce_2,
   4, 10, :_reduce_3,
-  1, 11, :_reduce_4,
-  3, 11, :_reduce_5,
-  4, 13, :_reduce_6,
-  2, 12, :_reduce_7,
-  0, 12, :_reduce_8 ]
+  2, 13, :_reduce_4,
+  1, 13, :_reduce_5,
+  1, 11, :_reduce_6,
+  3, 11, :_reduce_7,
+  4, 14, :_reduce_8,
+  2, 12, :_reduce_9,
+  0, 12, :_reduce_10 ]
 
-racc_reduce_n = 9
+racc_reduce_n = 11
 
-racc_shift_n = 17
+racc_shift_n = 19
 
 racc_token_table = {
   false => 0,
@@ -124,8 +124,9 @@ Racc_token_to_s_table = [
   "rulesets",
   "ruleset",
   "words",
-  "rules",
-  "rule" ]
+  "rs",
+  "word",
+  "r" ]
 
 Racc_debug_parser = false
 
@@ -159,7 +160,7 @@ module_eval(<<'.,.,', 'css.y', 14)
 
 module_eval(<<'.,.,', 'css.y', 19)
   def _reduce_4(val, _values, result)
-          result = val
+          result << " " + val[1]
     
     result
   end
@@ -167,7 +168,7 @@ module_eval(<<'.,.,', 'css.y', 19)
 
 module_eval(<<'.,.,', 'css.y', 22)
   def _reduce_5(val, _values, result)
-          result.push val[2]
+          result = val[0]
     
     result
   end
@@ -175,15 +176,15 @@ module_eval(<<'.,.,', 'css.y', 22)
 
 module_eval(<<'.,.,', 'css.y', 27)
   def _reduce_6(val, _values, result)
-          result = [val[0], val[2]]
+          result = val
     
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'css.y', 32)
+module_eval(<<'.,.,', 'css.y', 30)
   def _reduce_7(val, _values, result)
-          result.push val[1]
+          result.push val[2]
     
     result
   end
@@ -191,8 +192,24 @@ module_eval(<<'.,.,', 'css.y', 32)
 
 module_eval(<<'.,.,', 'css.y', 35)
   def _reduce_8(val, _values, result)
+          result = [val[0], val[2]]
+    
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'css.y', 40)
+  def _reduce_9(val, _values, result)
+          result.push val[1]
+    
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'css.y', 43)
+  def _reduce_10(val, _values, result)
           result = []
-  
+    
     result
   end
 .,.,

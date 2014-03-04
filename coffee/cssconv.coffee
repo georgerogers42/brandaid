@@ -3,7 +3,8 @@ define [], () ->
   module = {}
   rule = module.rule = (items) ->
     res = items[0].join(", ") + " {\n"
-    x = _.pairs items[1]
+    x = items[1]
+    x = _.pairs x unless _.isArray x
     r = _.map x, ([k, v]) ->
       if typeof v == "string"
         "\t#{k}: #{v};\n"
