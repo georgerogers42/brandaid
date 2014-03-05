@@ -53,7 +53,7 @@ rs :
       case str
       when /\A(\s)+/
         str = $'
-      when /\A[-A-Za-z0-9#.<]+/, /\A"[^"]*"/, /\A'[^']'/
+      when /\A[-A-Za-z0-9#.<]+/, /\A"[^"]*"/, /\A'[^']*'/
         @q.push [:WORD, $&]
         str = $'
       else

@@ -17,7 +17,7 @@ module_eval(<<'...end css.y/module_eval...', 'css.y', 48)
       case str
       when /\A(\s)+/
         str = $'
-      when /\A[-A-Za-z0-9#.<]+/, /\A"[^"]*"/, /\A'[^']'/
+      when /\A[-A-Za-z0-9#.<]+/, /\A"[^"]*"/, /\A'[^']*'/
         @q.push [:WORD, $&]
         str = $'
       else
