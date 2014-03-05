@@ -3,6 +3,9 @@ require 'slim'
 module BrandAid
   module UI
     class App < Sinatra::Base
+      before do
+        env['warden'].authenticate!
+      end
       helpers BrandAid::ModelHelpers
       get "/" do
         slim :index
