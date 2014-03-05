@@ -4,6 +4,6 @@ require 'bundler/setup'
 require 'minitap/autorun'
 Minitest.reporter = Minitap::TapJ
 
-Dir.glob("./test/*.rb").each do |test|
+Dir.glob("./test/*.rb").sort.each do |test|
   require test
 end
