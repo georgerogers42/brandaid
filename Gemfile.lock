@@ -16,6 +16,7 @@ GEM
       minitest (~> 5.0)
     moped (1.5.2)
     multi_json (1.8.4)
+    racc (1.4.11)
     rack (1.5.2)
     rack-flash (0.1.2)
       rack
@@ -57,6 +58,7 @@ DEPENDENCIES
   minitap (~> 0.5.3)
   moped (~> 1.5.2)
   multi_json (~> 1.8.4)
+  racc
   rack-flash
   rack-test (~> 0.6.2)
   shotgun (~> 0.9)
