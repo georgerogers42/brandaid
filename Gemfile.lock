@@ -38,7 +38,7 @@ GEM
       ansi
       json
     temple (0.6.7)
-    thin (1.6.1)
+    thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
