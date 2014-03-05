@@ -17,15 +17,21 @@
       $("p#jsonEditor").append(x);
       $("form#parseCson").on("submit", function(evt) {
         var data, req;
+        evt.preventDefault();
         data = {
-          body: $(this).find('input[name="body"]').val()
+          body: $(this).find('textarea[name="body"]').val()
         };
-        req = $.ajax("to/cson", {
+        req = $.ajax($("#appRoot").val() + "/to/cson", {
           data: data,
-          type: "post"
+          type: "post",
+          dataType: 'json'
         });
-        return req.done(function(data) {
-          return e.set(data);
+        req.done(function(data) {
+          e.set(data);
+          return update();
+        });
+        return req.fail(function(w, msg) {
+          return alert(msg);
         });
       });
       return $("form#styleEditor").on("submit", function(evt) {

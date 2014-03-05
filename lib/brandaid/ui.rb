@@ -7,7 +7,7 @@ module BrandAid
       get "/" do
         slim :index
       end
-      post '/:brand/to/cson' do
+      post '/:brand/to/cson' do |brand|
         JSON.dump BrandAid::CssParser.new.parse(params[:body])
       end
       post "/" do

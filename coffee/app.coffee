@@ -11,12 +11,15 @@ require ["bower_components/jsoneditor/jsoneditor-min", "cssconv"], (json, css) -
     $("pre#stylesheet").text(css.rules(json))
     $("p#jsonEditor").append(x)
     $("form#parseCson").on "submit", (evt) ->
-      # evt.preventDefault()
+      evt.preventDefault()
       data =
-        body: $(this).find('input[name="body"]').val()
-      req = $.ajax("to/cson", data: data, type: "post")
+        body: $(this).find('textarea[name="body"]').val()
+      req = $.ajax($("#appRoot").val() + "/to/cson", data: data, type: "post", dataType: 'json')
       req.done (data) ->
         e.set(data)
+        update()
+      req.fail (w, msg) ->
+        alert(msg)
     $("form#styleEditor").on "submit", (evt) ->
       evt.preventDefault()
       data =
