@@ -8,8 +8,8 @@ module BrandAid
         slim :login
       end
       post '/login' do
-        env['warden'].authenticate!
-        redirect '/'
+        env['warden'].authenticate
+        redirect '/login'
       end
     end
     extend self
@@ -21,25 +21,24 @@ module BrandAid
     end
   end
   Warden::Manager.serialize_into_session do |user|
-    JSON.dump [user["user"], Auth.digest(user["user"], user["_id"])]
+    user['_id']
   end
   Warden::Manager.serialize_from_session do |info|
-    name, token = JSON.parse info
-    user = Session[:users].find(user: name)
-    fail!("WHO ART THOU?") unless token == Auth.digest(user["user"], user["_id"])
+    user = BrandAid.Session[:users].find(_id: info)
   end
   Warden::Strategies.add :password do
     def valid?
-      params[:user] && params[:pass]
+      not(params['user'].nil? || params['pass'].nil?)
     end
     def authenticate!
-      user = params[:user]
-      pass = params[:pass]
+      user = params['user']
+      pass = params['pass']
       session = BrandAid.Session
-      if u = session[:users].find(user: user, pass: BrandAid::Auth.digest(user, pass)).first
-        success!(u)
-      else
+      u = session[:users].find(user: user, pass: Auth.digest(user, pass)).first
+      if u.nil?
         fail!("WHO ART THOU?")
+      else
+        success!(u)
       end
     end
   end
