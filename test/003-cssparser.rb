@@ -2,7 +2,7 @@ require 'brandaid/css.tab'
 class BrandAid::CssParserTest < Minitest::Test
   def test_parse
     a = BrandAid::CssParser.new.parse <<END
-.foo, .bar {
+.foo, div.bar #baz {
   font-family: "Times New Roman", serif;
   color: red;
 }
@@ -12,7 +12,7 @@ class BrandAid::CssParserTest < Minitest::Test
 }
 END
     assert_equal a, [
-        [[".foo", ".bar"], [['font-family', ['"Times New Roman"', 'serif']], ['color', ['red']]]],
+        [[".foo", "div.bar #baz"], [['font-family', ['"Times New Roman"', 'serif']], ['color', ['red']]]],
         [[".baz"], [['font-family', ["'Arial'", "sans-serif"]], ['color', ["#00ff00"]]]]
     ]
 
