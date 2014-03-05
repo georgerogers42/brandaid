@@ -7,17 +7,21 @@ module BrandAid
       get '/login' do
         slim :login
       end
+      post '/logout' do
+        env['warden'].logout
+        redirect url '/login'
+      end
       post '/login' do
         env['warden'].authenticate
-        redirect '/login'
+        redirect url '/'
       end
     end
     extend self
-    def salt user, pass
-      user * pass.length + pass * user.length
+    def salt user, pass, salter
+      (salter + user * pass.length + pass * user.length) * salter.length
     end
-    def digest user, pass
-      Digest::SHA512.base64digest(salt(user, pass))
+    def digest user, pass, salter
+      Digest::SHA512.base64digest(salt(user, pass, salter))
     end
   end
   Warden::Manager.serialize_into_session do |user|
@@ -34,11 +38,11 @@ module BrandAid
       user = params['user']
       pass = params['pass']
       session = BrandAid.Session
-      u = session[:users].find(user: user, pass: Auth.digest(user, pass)).first
-      if u.nil?
-        fail!("WHO ART THOU?")
-      else
+      u = session[:users].find(user: user).first
+      if !u.nil? && Auth.digest(user, pass, u["salt"]) == u["pass"]
         success!(u)
+      else
+        fail!("WHO ART THOU!")
       end
     end
   end
