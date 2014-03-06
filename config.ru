@@ -10,14 +10,13 @@ use Warden::Manager do |config|
   config.failure_app = BrandAid::Auth::Login
   config.scope_defaults :default,
     strategies: [:password],
-    action: '/auth/login'
+    action: '/login'
 end
-map '/auth' do
-  run BrandAid::Auth::Login
-end
+
 map '/css' do
+  use BrandAid::Auth::Login
   run BrandAid::App
 end
 
-
+use BrandAid::Auth::Login
 run BrandAid::UI::App

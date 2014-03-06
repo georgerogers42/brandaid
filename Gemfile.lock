@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.5)
     ansi (1.4.3)
     closure-compiler (1.1.10)
     daemons (1.1.9)
@@ -54,6 +55,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   closure-compiler
   minitap (~> 0.5.3)
   moped (~> 1.5.2)

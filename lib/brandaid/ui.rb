@@ -1,4 +1,5 @@
 require 'brandaid/css.tab'
+require 'addressable/uri'
 require 'slim'
 module BrandAid
   module UI
@@ -21,6 +22,7 @@ module BrandAid
         end
       end
       get '/:brand/?' do |brand|
+        @style = params['style'] || 'default'
         get_brand brand
         slim :brand
       end
@@ -38,9 +40,12 @@ module BrandAid
         json = JSON.parse params[:body]
         Css.rules json.clone
         styles = @brand["styles"] ||= {}
-        styles[params[:file]] = json
+        file = params["file"]
+        styles[file] = json
         put_brand brand
-        "Style #{params[:file]} has been created/updated"
+        u = Addressable::URI.new
+        u.query_values = ({style: file})
+        redirect url "/#{brand}#{u}"
       end
       post '/:brand/js' do |brand|
         begin

@@ -1,15 +1,13 @@
-doctype html
-html
-  head
-    title Login
-  body
-    form method='post' action=url('logout')
-      input type='submit' value='Logout'
-    form method='post'
-      div 
-        = "Username: "
-        input type='text' name="user"
-      div
-        = "Password: "
-        input type='password' name="pass"
-      input type="submit"
+h1 Login
+h1
+  a href=url("signup") Signup
+form method='post' action=url('logout')
+  input type='submit' value='Logout'
+form method='post' action=url('login')
+  div 
+    = "Username: "
+    input type='text' name="user"
+  div
+    = "Password: "
+    input type='password' name="pass"
+  input type="submit" value="Login"

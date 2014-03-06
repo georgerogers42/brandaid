@@ -1,13 +1,19 @@
 require ["bower_components/jsoneditor/jsoneditor-min", "cssconv"], (json, css) ->
+  "use strict"
   $ () ->
+    style = $("#styleName").val()
     x = $("<div>")
     update = () ->
+      $("#jsonBody").val(e.getText())
       $("pre#stylesheet").text(css.rules(e.get()))
     e = new json.JSONEditor x[0],
       modes: ['tree', 'code']
       change: update
-    json = JSON.parse($("input#styles").val()).default
-    e.set(json)
+    json = JSON.parse($("input#styles").val())[$("input#styleName").val()]
+    bh = (style) ->
+      e.set(json)
+      update()
+    bh(style)
     $("pre#stylesheet").text(css.rules(json))
     $("p#jsonEditor").append(x)
     $("form#parseCson").on "submit", (evt) ->
@@ -20,17 +26,3 @@ require ["bower_components/jsoneditor/jsoneditor-min", "cssconv"], (json, css) -
         update()
       req.fail (w, msg) ->
         alert(msg)
-    $("form#styleEditor").on "submit", (evt) ->
-      evt.preventDefault()
-      data =
-        body: e.getText()
-        file: $("input#styleName").val()
-      req = $.ajax "",
-        type: "post"
-        data: data
-      req.done (data) ->
-        alert data
-      req.fail (self, data) ->
-        e.set(json)
-        update()
-        alert data

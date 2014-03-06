@@ -1,19 +1,38 @@
 require 'sinatra/base'
+require 'brandaid/model'
 require 'warden'
 
 module BrandAid
   module Auth
     class Login < Sinatra::Base
+      helpers BrandAid::ModelHelpers
+      get '/signup' do
+        slim :signup
+      end
+      post '/signup' do
+        user = params['user']
+        email = params['email'].downcase
+        pass1 = params['pass1']
+        pass2 = params['pass2']
+        salt = DateTime.now.iso8601
+        if pass1 == pass2
+          BrandAid.Session[:users].insert(user: user.downcase, pass: Auth.digest(user, pass1, salt), salt: salt, email: email)
+          create_brand user
+          redirect url '/login'
+        else
+          redirect url '/signup'
+        end
+      end
       get '/login' do
         slim :login
       end
       post '/logout' do
         env['warden'].logout
-        redirect url '/login'
+        redirect '/'
       end
       post '/login' do
         env['warden'].authenticate
-        redirect url '/'
+        redirect "/#{params['user']}"
       end
     end
     extend self
@@ -38,7 +57,7 @@ module BrandAid
       user = params['user']
       pass = params['pass']
       session = BrandAid.Session
-      u = session[:users].find(user: user).first
+      u = session[:users].find(user: user.downcase).first
       if !u.nil? && Auth.digest(user, pass, u["salt"]) == u["pass"]
         success!(u)
       else
