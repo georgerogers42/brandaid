@@ -9,9 +9,10 @@ gem 'unicorn', '~>4.8.2'
 gem 'rack-test', '~>0.6.2'
 gem 'rack-flash'
 gem 'warden'
-gem 'racc'
+gem 'addressable'
 
 group :development do
+  gem 'racc'
   gem 'closure-compiler'
   gem 'minitap', '~>0.5.3'
   gem 'tapout', '~>0.4.5'

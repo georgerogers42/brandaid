@@ -1,0 +1,17 @@
+h1 Signup
+form method='post' action=url('logout')
+  input type='submit' value='Logout'
+form method='post' action=url('/signup')
+  div 
+    = "Username: "
+    input type='text' name="user"
+  div
+    = "Email: "
+    input type='text' name="email"
+  div
+    = "Password: "
+    input type='password' name="pass1"
+  div
+    = "Password: "
+    input type='password' name="pass2"
+  input type="submit" value="Signup"
