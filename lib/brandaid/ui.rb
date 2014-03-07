@@ -21,14 +21,14 @@ module BrandAid
           redirect url(params[:name])
         end
       end
-      get '/:brand/?' do |brand|
+      get '/:brand' do |brand|
         @style = params['style'] || 'default'
         get_brand brand
         slim :brand
       end
       get '/:brand/:file.js' do |brand, file|
         get_brand brand
-        content_type "application/javascript"
+        content_type 'text/plain'
         begin
           @brand["scripts"][file]
         rescue
