@@ -1,9 +1,5 @@
-$LOAD_PATH.push("lib")
 require 'bundler/setup'
-require 'brandaid/app'
-require 'brandaid/ui'
-require 'brandaid/warden'
-require 'rack/session/cookie'
+require './lib/brandaid/import'
 
 use Rack::Session::Cookie, secret:(ENV["SECRET"] || "AGASSDTRArawtjastjksek")
 use Warden::Manager do |config|

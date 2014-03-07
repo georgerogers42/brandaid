@@ -19,3 +19,11 @@ form#parseCson method="post" action=url("#{@brand['name']}/to/cson")
     textarea name="body"
   p
     input type="submit"
+form#editScript action=url("#{@brand['name']}/js") method="post"
+  input name="file"
+  textarea#macro cols=80 rows=25 name="body"
+  input type="submit"
+form#loadScript
+  input.file
+  input type="submit" value="Load"
+button#run Run

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./test/runner | tapout tap
+./test/runner test/001-*.rb | tapout tap

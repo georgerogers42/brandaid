@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.push("lib")
+$LOAD_PATH.push(".")
 require 'bundler/setup'
 require 'minitap/autorun'
 Minitest.reporter = Minitap::TapJ
 
-Dir.glob("./test/*.rb").sort.each do |test|
+ARGV.each do |test|
   require test
 end

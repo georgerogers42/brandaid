@@ -19,12 +19,13 @@ GEM
     multi_json (1.8.4)
     racc (1.4.11)
     rack (1.5.2)
-    rack-flash (0.1.2)
-      rack
     rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
     raindrops (0.13.0)
     shotgun (0.9)
       rack (>= 1.0)
@@ -55,18 +56,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  addressable
+  addressable (~> 2.3.5)
   closure-compiler
   minitap (~> 0.5.3)
   moped (~> 1.5.2)
   multi_json (~> 1.8.4)
   racc
-  rack-flash
   rack-test (~> 0.6.2)
+  racksh
   shotgun (~> 0.9)
   sinatra (~> 1.4.4)
   slim (~> 2.0.2)
   tapout (~> 0.4.5)
   thin (~> 1.6.1)
   unicorn (~> 4.8.2)
-  warden
+  warden (~> 1.2.3)

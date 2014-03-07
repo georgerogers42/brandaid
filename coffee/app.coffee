@@ -1,4 +1,4 @@
-require ["bower_components/jsoneditor/jsoneditor-min", "cssconv"], (json, css) ->
+require ["bower_components/jsoneditor/jsoneditor-min", "cssconv", "eval", "buckUnder"], (json, css, mkEval, $_) ->
   "use strict"
   $ () ->
     style = $("#styleName").val()
@@ -26,3 +26,19 @@ require ["bower_components/jsoneditor/jsoneditor-min", "cssconv"], (json, css) -
         update()
       req.fail (w, msg) ->
         alert(msg)
+    env = Object.create(window)
+    env.$_ = $_
+    evaluator = mkEval(env)
+    $("form#loadScript").on "submit", (evt) ->
+      evt.preventDefault()
+      macroName = $(this).find("input.file").val()
+      req = $.ajax "/#{$("#brandName").val()}/#{macroName}.js"
+      req.done (data) ->
+        $("#macro").val(data)
+      req.fail (foo, err) ->
+        alert(err)
+    $("button#run").on "click", (evt) ->
+      script = $("#macro").val()
+      f = evaluator(script)
+      e.set(f(e.get()))
+      update()
