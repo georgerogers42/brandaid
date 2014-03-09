@@ -8,7 +8,7 @@ module BrandAid
     extend self
     def rule items
       res = items[0].join(", ") + " {\n"
-      res += items[1].map do |p|
+      res += items[1].to_a.map do |p|
         k, v = p
         if v.is_a? String
           "\t#{k}: #{v};\n"
