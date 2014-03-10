@@ -7,7 +7,13 @@ module BrandAid
   module Css
     extend self
     def rule items
-      res = items[0].join(", ") + " {\n"
+      res = items[0].map do |rule|
+        if rule.is_a? Array
+          rule.join " "
+        else
+          rule
+        end
+      end.join(", ") + " {\n"
       res += items[1].to_a.map do |p|
         k, v = p
         if v.is_a? String
