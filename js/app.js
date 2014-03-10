@@ -49,7 +49,7 @@
       var macroName, req;
       evt.preventDefault();
       macroName = $(this).find("input.file").val();
-      req = $.ajax("/" + ($("#brandName").val()) + "/" + macroName + ".js");
+      req = $.ajax("/" + ($("#brandName").val()) + "/" + macroName + ".coffee");
       req.done(function(data) {
         return $("#macro").val(data);
       });
