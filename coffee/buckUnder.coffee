@@ -5,7 +5,7 @@ catmap = module.catmap = (x, p) ->
   for v in x
     a.push.apply(a, p(v))
   return a
-findIndex = module.indexOf = (x, p) ->
+findIndex = module.findIndex = (x, p) ->
   for pair, i in x
     return i if p(pair)
   return undefined

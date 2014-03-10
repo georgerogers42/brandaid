@@ -8,7 +8,7 @@ end
 task 'default' => ['test']
 
 task 'coffee' do
-  sh "coffee -o js -c coffee"
+  sh "coffee -o js/src -c coffee"
 end
 
 task 'racc' do
@@ -18,10 +18,10 @@ end
 task 'uglify' => ['coffee'] do
   files = nil
   Dir.chdir "js" do
-   files = Dir.glob("*.js").map(&File.method(:expand_path))
+   files = Dir.glob("src/*.js").map(&File.method(:expand_path))
   end
   files.each do |file|
-    system "uglifyjs --source-map js/#{File.basename file}.map -o js/#{File.basename file}.min.js js/#{File.basename(file)}"
+    system "uglifyjs --source-map js/#{File.basename file}.map -o js/#{File.basename file}.min.js js/src/#{File.basename(file)}"
     FileUtils.cp "js/#{File.basename file}.min.js", "lib/brandaid/public/js"
     FileUtils.cp "js/#{File.basename file}.map", "lib/brandaid/public/js/js"
   end
