@@ -1,10 +1,10 @@
 require 'bundler/setup'
 require 'closure-compiler'
-task 'test' => ['racc'] do
+task 'test' => ['racc', 'uglify'] do
   sh 'prove'
 end
 
-task 'default' => ['racc', 'uglify', 'test']
+task 'default' => ['test']
 
 task 'coffee' do
   sh "coffee -m -o js -c coffee"
