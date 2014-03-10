@@ -16,10 +16,10 @@
   };
 
   findIndex = module.findIndex = function(x, p) {
-    var i, pair, _i, _len;
+    var e, i, _i, _len;
     for (i = _i = 0, _len = x.length; _i < _len; i = ++_i) {
-      pair = x[i];
-      if (p(pair)) {
+      e = x[i];
+      if (p(e)) {
         return i;
       }
     }

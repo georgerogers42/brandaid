@@ -8,6 +8,9 @@ end
 task 'default' => ['test']
 
 task 'coffee' do
+  Dir.glob "coffee/*.js" do |file|
+    FileUtils.cp file, "js/src"
+  end
   sh "coffee -o js/src -c coffee"
 end
 
