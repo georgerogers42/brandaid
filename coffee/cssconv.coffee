@@ -2,7 +2,10 @@ define [], () ->
   "use strict"
   module = {}
   rule = module.rule = (items) ->
-    res = items[0].join(", ") + " {\n"
+    rules = _.map items[0], (rule) ->
+      return rule.join " " if _.isArray rule
+      return rule
+    res = rules.join(", ") + " {\n"
     x = items[1]
     x = _.pairs x unless _.isArray x
     r = _.map x, ([k, v]) ->

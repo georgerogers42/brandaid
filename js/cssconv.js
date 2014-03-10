@@ -5,8 +5,14 @@
     var module, rule, rules;
     module = {};
     rule = module.rule = function(items) {
-      var r, res, x;
-      res = items[0].join(", ") + " {\n";
+      var r, res, rules, x;
+      rules = _.map(items[0], function(rule) {
+        if (_.isArray(rule)) {
+          return rule.join(" ");
+        }
+        return rule;
+      });
+      res = rules.join(", ") + " {\n";
       x = items[1];
       if (!_.isArray(x)) {
         x = _.pairs(x);
