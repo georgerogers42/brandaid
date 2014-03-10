@@ -3,10 +3,8 @@ html
   head
     title Hello
     link rel="stylesheet" href="/brandaid.css" 
+    link rel="stylesheet" href="/js/bower_components/jsoneditor/jsoneditor-min.css"
   body
     a href=url("login") Logout
     == yield
-    script src="/js/bower_components/underscore/underscore.js"
-    script src="/js/bower_components/jquery/dist/jquery.min.js"
-    script src="/js/bower_components/requirejs/require.js" data-main=@main
     == slim @footer, layout: false if @footer
