@@ -26,7 +26,7 @@ module BrandAid
         get_brand brand
         slim :brand
       end
-      get '/:brand/:file.js' do |brand, file|
+      get '/:brand/:file.coffee' do |brand, file|
         get_brand brand
         content_type 'text/plain'
         begin

@@ -33,7 +33,7 @@ $ () ->
   $("form#loadScript").on "submit", (evt) ->
     evt.preventDefault()
     macroName = $(this).find("input.file").val()
-    req = $.ajax "/#{$("#brandName").val()}/#{macroName}.js"
+    req = $.ajax "/#{$("#brandName").val()}/#{macroName}.coffee"
     req.done (data) ->
       $("#macro").val(data)
     req.fail (foo, err) ->

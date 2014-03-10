@@ -37,5 +37,3 @@
   return module;
 
 }).call(this);
-
-//# sourceMappingURL=buckUnder.map
