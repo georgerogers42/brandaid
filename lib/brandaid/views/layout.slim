@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    == slim @header, layout: false if @header
     title Hello
     link rel="stylesheet" href="/brandaid.css" 
     link rel="stylesheet" href="/js/bower_components/jsoneditor/jsoneditor-min.css"

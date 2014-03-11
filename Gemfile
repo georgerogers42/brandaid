@@ -9,6 +9,7 @@ gem 'unicorn', '~>4.8.2'
 gem 'rack-test', '~>0.6.2'
 gem 'warden', '~>1.2.3'
 gem 'addressable', '~>2.3.5'
+gem 'rdiscount'
 
 group :development do
   gem 'racksh'

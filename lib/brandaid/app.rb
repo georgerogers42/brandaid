@@ -14,11 +14,15 @@ module BrandAid
       content_type "text/css"
       Css.rules @brand["styles"]["default"]
     end
-    get '/:brand' do |brand|
+    get '/:brand.json' do |brand|
       get_brand brand
       @brand.delete "_id"
       content_type "application/json"
       JSON.dump @brand
+    end
+    get '/:brand' do |brand|
+      get_brand brand
+      slim :brand_rules
     end
   end
 end

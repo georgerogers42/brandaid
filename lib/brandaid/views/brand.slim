@@ -12,6 +12,9 @@ form#styleEditor action=url("#{@brand["name"]}/") method="post"
   input#jsonBody type="hidden" name="body"
   p#jsonEditor
   p
+    textarea name="rules" rows="20" cols="80"
+      = @brand["rules"]
+  p
     input type="submit" value="Save"
 button#changeStyle Change Style
 form#parseCson method="post" action=url("#{@brand['name']}/to/cson")
