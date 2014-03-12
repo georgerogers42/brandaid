@@ -40,6 +40,6 @@
         $("button#run").on "click", (evt) ->
           script = $("#macro").val()
           f = evaluator(script)
-          f e.get(), (data) ->
-            e.set(data)
-            update()
+          data = f e.get()
+          e.set(data)
+          update()
