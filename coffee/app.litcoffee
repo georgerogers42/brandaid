@@ -1,7 +1,7 @@
     "use strict"
     $ () ->
       json = jsoneditor
-      css = cssconv
+      css = window.cssconv
       style = $("#styleName").val()
       x = $("<div>")
       update = () ->

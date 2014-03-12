@@ -4,7 +4,7 @@
   $(function() {
     var bh, css, e, env, evaluator, json, style, update, x;
     json = jsoneditor;
-    css = cssconv;
+    css = window.cssconv;
     style = $("#styleName").val();
     x = $("<div>");
     update = function() {
