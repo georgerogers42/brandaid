@@ -3,7 +3,7 @@
   "use strict";
   require(["jquery", "js/bower_components/jsoneditor/jsoneditor-min", "js/cssconv.js.min", "js/buckUnder.js.min", "js/eval.js.min"], function($, json, cssconv, $_, mkEval) {
     return $(function() {
-      var bh, cson, e, env, evaluator, style, update, x;
+      var bh, cson, e, env, evaluator, style, update, x, _ref;
       style = $("#styleName").val();
       x = $("<div>");
       update = function() {
@@ -14,7 +14,7 @@
         modes: ['tree', 'code'],
         change: update
       });
-      cson = JSON.parse($("input#styles").val() || "{}")[$("input#styleName").val()];
+      cson = (_ref = JSON.parse($("input#styles").val())) != null ? _ref[$("input#styleName").val()] : void 0;
       bh = function(style) {
         e.set(cson);
         return update();
