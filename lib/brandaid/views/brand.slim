@@ -1,4 +1,6 @@
 - @footer = :footer
+h1
+  a href="/css/#{@brand['name']}" Preview
 input#styles type="hidden" value="#{JSON.dump @brand['styles']}"
 input#appRoot type="hidden" value=url
 input#brandName type="hidden" value=@brand['name']
