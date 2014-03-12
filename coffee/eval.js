@@ -1,8 +1,10 @@
-mkEval = function(window) {
-	with(window) {
-		return function(quine) {
-			"use strict";
-			return CoffeeScript.eval(quine);
-		};
-	}
-};
+define([], function() {
+  return function(window) {
+    with(window) {
+      return function(quine) {
+        "use strict";
+        return CoffeeScript.eval(quine);
+      };
+    }
+  };
+});

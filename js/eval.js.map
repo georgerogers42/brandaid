@@ -1,1 +1,1 @@
-{"version":3,"file":"js/eval.js.min.js","sources":["js/src/eval.js"],"names":["mkEval","window","quine","CoffeeScript","eval"],"mappings":"AAAAA,OAAS,SAASC,QACjB,KAAKA,OAAQ,CACZ,MAAO,UAASC,OACf,YACA,OAAOC,cAAaC,KAAKF"}
+{"version":3,"file":"js/eval.js.min.js","sources":["js/src/eval.js"],"names":["define","window","quine","CoffeeScript","eval"],"mappings":"AAAAA,UAAW,WACT,MAAO,UAASC,QACd,KAAKA,OAAQ,CACX,MAAO,UAASC,OACd,YACA,OAAOC,cAAaC,KAAKF"}
