@@ -1,12 +1,11 @@
     "use strict"
     $ () ->
       json = jsoneditor
-      css = window.cssconv
       style = $("#styleName").val()
       x = $("<div>")
       update = () ->
         $("#jsonBody").val(e.getText())
-        $("pre#stylesheet").text(css.rules(e.get()))
+        $("pre#stylesheet").text(cssconv.rules(e.get()))
       e = new json.JSONEditor x[0],
         modes: ['tree', 'code']
         change: update
@@ -15,7 +14,7 @@
         e.set(json)
         update()
       bh(style)
-      $("pre#stylesheet").text(css.rules(json))
+      $("pre#stylesheet").text(cssconv.rules(json))
       $("p#jsonEditor").append(x)
       $("form#parseCson").on "submit", (evt) ->
         evt.preventDefault()

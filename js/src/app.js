@@ -2,14 +2,13 @@
 (function() {
   "use strict";
   $(function() {
-    var bh, css, e, env, evaluator, json, style, update, x;
+    var bh, e, env, evaluator, json, style, update, x;
     json = jsoneditor;
-    css = window.cssconv;
     style = $("#styleName").val();
     x = $("<div>");
     update = function() {
       $("#jsonBody").val(e.getText());
-      return $("pre#stylesheet").text(css.rules(e.get()));
+      return $("pre#stylesheet").text(cssconv.rules(e.get()));
     };
     e = new json.JSONEditor(x[0], {
       modes: ['tree', 'code'],
@@ -21,7 +20,7 @@
       return update();
     };
     bh(style);
-    $("pre#stylesheet").text(css.rules(json));
+    $("pre#stylesheet").text(cssconv.rules(json));
     $("p#jsonEditor").append(x);
     $("form#parseCson").on("submit", function(evt) {
       var data, req;
