@@ -60,8 +60,10 @@
         var f, script;
         script = $("#macro").val();
         f = evaluator(script);
-        e.set(f(e.get()));
-        return update();
+        return f(e.get(), function(data) {
+          e.set(data);
+          return update();
+        });
       });
     });
   });
