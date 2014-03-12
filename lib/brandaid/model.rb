@@ -2,8 +2,11 @@ require 'moped'
 module BrandAid
   extend self
   def Session
-    url = URI.parse(ENV['MONGOHQ_URL'] || "localhost:27017")
-    Moped::Session.new([url.host])
+    url = ENV['MONGOHQ_URL'] || "localhost:27017/brandaid"
+    sess = Moped::Session.new(["#{url.host}:#{url.port}"])
+    sess.use(url.path.sub('/', ''))
+    sess.login(url.user, url.password)
+    return sess
   end
   module Css
     extend self
