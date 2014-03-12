@@ -6,24 +6,36 @@ input#appRoot type="hidden" value=url
 input#brandName type="hidden" value=@brand['name']
 pre#stylesheet
 form
-  input name="style"
+  table
+    tr
+      td Style Name
+      td
+        input name="style"
   input type="submit"
 form#styleEditor action=url("#{@brand["name"]}/") method="post"
-  p
-    input#styleName name="file" value=@style
   input#jsonBody type="hidden" name="body"
-  p#jsonEditor
-  p
-    textarea name="rules" rows="20" cols="80"
-      = @brand["rules"]
-  p
-    input type="submit" value="Save"
+  table
+    tr
+      td Style Name
+      td
+        input#styleName name="file" value=@style
+    tr
+      td Structural CSS Editor
+      td
+        p#jsonEditor
+    tr
+      td Rules for the use of your trademarks.
+      td
+        textarea name="rules" rows="20" cols="80"
+          = @brand["rules"]
+  input type="submit" value="Save"
 button#changeStyle Change Style
 form#parseCson method="post" action=url("#{@brand['name']}/to/cson")
-  p
-    textarea name="body"
-  p
-    input type="submit"
+  table
+    tr
+      td Enter CSS
+      textarea name="body"
+  input type="submit"
 form#editScript action=url("#{@brand['name']}/js") method="post"
   input name="file"
   textarea#macro cols=80 rows=25 name="body"
