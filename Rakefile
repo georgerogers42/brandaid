@@ -21,7 +21,7 @@ task 'uglify' => ['coffee'] do
    files = Dir.glob("src/*.js").map(&File.method(:expand_path))
   end
   files.each do |file|
-    system "uglifyjs --source-map js/#{File.basename file}.map -o js/#{File.basename file}.min.js js/src/#{File.basename(file)}"
+    sh "uglifyjs --source-map js/#{File.basename file}.map -o js/#{File.basename file}.min.js js/src/#{File.basename(file)}"
     FileUtils.cp "js/#{File.basename file}.min.js", "lib/brandaid/public/js"
     FileUtils.cp "js/#{File.basename file}.map", "lib/brandaid/public/js/js"
   end
