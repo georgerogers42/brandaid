@@ -1,11 +1,8 @@
 require 'bundler/setup'
 require 'fileutils'
-require 'closure-compiler'
 task 'test' => ['racc', 'uglify'] do
   sh 'prove'
 end
-
-task 'default' => ['test']
 
 task 'coffee' do
   Dir.glob "coffee/*.js" do |file|
