@@ -3,7 +3,7 @@ define([], function() {
     with(window) {
       return function(quine) {
         "use strict";
-        return eval(CoffeeScript.compile(quine));
+        return eval(CoffeeScript.compile(quine, {bare: true}));
       };
     }
   };
