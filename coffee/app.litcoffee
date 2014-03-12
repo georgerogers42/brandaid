@@ -26,7 +26,9 @@
             update()
           req.fail (w, msg) ->
             alert(msg)
-        evaluator = mkEval({$_: $_})
+        env = Object.create(window)
+        env.$_ = $_
+        evaluator = mkEval(env)
         $("form#loadScript").on "submit", (evt) ->
           evt.preventDefault()
           macroName = $(this).find("input.file").val()
@@ -38,6 +40,6 @@
         $("button#run").on "click", (evt) ->
           script = $("#macro").val()
           f = evaluator(script)
-          f e.get(), (data) ->
-            e.set(data)
-            update()
+          data = f e.get()
+          e.set(data)
+          update()
