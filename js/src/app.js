@@ -57,13 +57,12 @@
         });
       });
       return $("button#run").on("click", function(evt) {
-        var f, script;
+        var data, f, script;
         script = $("#macro").val();
         f = evaluator(script);
-        return f(e.get(), function(data) {
-          e.set(data);
-          return update();
-        });
+        data = f(e.get());
+        e.set(data);
+        return update();
       });
     });
   });
