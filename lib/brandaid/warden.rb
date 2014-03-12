@@ -6,23 +6,23 @@ module BrandAid
   module Auth
     class Login < Sinatra::Base
       helpers BrandAid::ModelHelpers
-      get '/signup' do
-        slim :signup
-      end
-      post '/signup' do
-        user = params['user']
-        email = params['email'].downcase
-        pass1 = params['pass1']
-        pass2 = params['pass2']
-        salt = DateTime.now.iso8601
-        if pass1 == pass2
-          BrandAid.Session[:users].insert(user: user.downcase, pass: Auth.digest(user, pass1, salt), salt: salt, email: email)
-          create_brand user
-          redirect url '/login'
-        else
-          redirect url '/signup'
-        end
-      end
+      # get '/signup' do
+      #  slim :signup
+      # end
+      # post '/signup' do
+        # user = params['user']
+        # email = params['email'].downcase
+        # pass1 = params['pass1']
+        # pass2 = params['pass2']
+        # salt = DateTime.now.iso8601
+        # if pass1 == pass2
+          # BrandAid.Session[:users].insert(user: user.downcase, pass: Auth.digest(user, pass1, salt), salt: salt, email: email)
+          # create_brand user
+          # redirect url '/login'
+        # else
+          # redirect url '/signup'
+        # end
+      # end
       get '/login' do
         slim :login
       end
