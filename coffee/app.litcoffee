@@ -9,7 +9,7 @@
         e = new json.JSONEditor x[0],
           modes: ['tree', 'code']
           change: update
-        cson = JSON.parse($("input#styles").val())[$("input#styleName").val()]
+        cson = JSON.parse($("input#styles").val() || "{}")[$("input#styleName").val()]
         bh = (style) ->
           e.set(cson)
           update()
