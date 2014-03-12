@@ -14,7 +14,7 @@
         modes: ['tree', 'code'],
         change: update
       });
-      cson = JSON.parse($("input#styles").val())[$("input#styleName").val()];
+      cson = JSON.parse($("input#styles").val() || "{}")[$("input#styleName").val()];
       bh = function(style) {
         e.set(cson);
         return update();
