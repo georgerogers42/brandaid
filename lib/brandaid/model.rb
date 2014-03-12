@@ -3,7 +3,7 @@ module BrandAid
   extend self
   def Session
     url = URI.parse(ENV['MONGOHQ_URL'] || "localhost:27017")
-    Moped::Session.new(database:url.path.sub('/', ''), username:url.user, password:url.password, hosts:"#{url.host}:#{url.port}").use(:brandaid)
+    Moped::Session.new({database:url.path.sub('/', ''), username:url.user, password:url.password, hosts:"#{url.host}:#{url.port}"}).use(:brandaid)
   end
   module Css
     extend self
