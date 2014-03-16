@@ -11,14 +11,14 @@ module BrandAid
   module Css
     extend self
     def rule items
-      res = items[0].map do |rule|
+      res = items["selectors"].map do |rule|
         if rule.is_a? Array
           rule.join " "
         else
           rule
         end
       end.join(", ") + " {\n"
-      res += items[1].to_a.map do |p|
+      res += items["rules"].to_a.map do |p|
         k, v = p
         if v.is_a? String
           "\t#{k}: #{v};\n"
@@ -30,12 +30,33 @@ module BrandAid
       end.join ""
       res += "}\n"
     end
-    def rules t
+    def call t
       t.map do |r|
-        rule r
+        rule r if r["kind"] == "font"
       end.join("")
     rescue => e
       e
+    end
+    alias_method :[], :call
+    alias_method :rules, :call
+    def to_proc
+      method(:call).to_proc
+    end
+  end
+  module Page
+    extend self
+    def rule r
+      RDiscount.new(r["text"].to_s).to_html
+    end
+    def call t
+      t.map do |r|
+        rule r
+      end
+    end
+    alias_method :rules, :call
+    alias_method :[], :call
+    def to_proc
+      method(:call).to_proc
     end
   end
   module ModelHelpers

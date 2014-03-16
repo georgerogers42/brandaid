@@ -6,14 +6,17 @@
     module = {};
     rule = module.rule = function(items) {
       var r, res, rs, x;
-      rs = _.map(items[0], function(rx) {
+      if (items.kind !== "font") {
+        return [];
+      }
+      rs = _.map(items.selectors, function(rx) {
         if (_.isArray(rx)) {
           return rx.join(" ");
         }
         return rx;
       });
       res = rs.join(", ") + " {\n";
-      x = items[1];
+      x = items.rules;
       if (!_.isArray(x)) {
         x = _.pairs(x);
       }
@@ -29,12 +32,13 @@
         }
       });
       res += r.join("");
-      return res += "}";
+      res += "}";
+      return [res];
     };
     rules = module.rules = function(t) {
       var e;
       try {
-        return _.map(t, rule).join("\n");
+        return _.catmap(t, rule).join("\n");
       } catch (_error) {
         e = _error;
         return e;

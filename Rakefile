@@ -4,6 +4,8 @@ task 'test' => ['racc', 'uglify'] do
   sh 'prove'
 end
 
+task 'build' => ['test']
+
 task 'coffee' do
   Dir.glob "coffee/*.js" do |file|
     FileUtils.cp file, "js/src"

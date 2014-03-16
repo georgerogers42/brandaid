@@ -1,3 +1,7 @@
-.jsoneditor .outer .text {
-	height: 6in;
+#jsonEditor {
+    width: 6in;
 }	
+
+#jsonEditor textarea {
+    height: 4in;
+}

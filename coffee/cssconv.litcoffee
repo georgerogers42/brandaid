@@ -2,11 +2,12 @@
     define ["js/buckUnder.js.min"], (_) ->
       module = {}
       rule = module.rule = (items) ->
-        rs = _.map items[0], (rx) ->
+        return [] if items.kind isnt "font"
+        rs = _.map items.selectors, (rx) ->
           return rx.join " " if _.isArray rx
           return rx
         res = rs.join(", ") + " {\n"
-        x = items[1]
+        x = items.rules
         x = _.pairs x unless _.isArray x
         r = _.map x, ([k, v]) ->
           if typeof v == "string"
@@ -17,9 +18,10 @@
             throw new Error("Not valid cson")
         res += r.join ""
         res += "}"
+        return [res]
       rules = module.rules = (t) ->
         try
-          _.map(t, rule).join("\n")
+          _.catmap(t, rule).join("\n")
         catch e
           e
       return module
