@@ -1,3 +1,6 @@
 - @header = :header
+- if env['warden'].user
+  h1
+    a href="/#{@brand["name"]}" Edit #{@brand["name"]}.
 div#brandRules
   == BrandAid::Page.call(@brand["styles"]["default"])

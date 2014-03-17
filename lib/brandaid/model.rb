@@ -34,9 +34,10 @@ module BrandAid
       end.join(", ") + " {\n"
       res += items["rules"].to_a.map do |p|
         k, v = p
-        if v.is_a? String
+        case v
+        when String
           "\t#{k}: #{v};\n"
-        elsif v.is_a? Array
+        when Array
           "\t#{k}: #{v.join(", ")};\n"
         else
           throw ArgumentError
@@ -57,7 +58,13 @@ module BrandAid
   module Page
     extend self
     def rule r
-      RDiscount.new(r["text"].to_s).to_html
+      x = r["text"]
+      case x
+      when Array
+        RDiscount.new(x.join("\n")).to_html
+      else
+        RDiscount.new(x.to_s).to_html
+      end
     end
     def call t
       t.map do |r|
