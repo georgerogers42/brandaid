@@ -92,6 +92,10 @@
 <main role="main" aria-label="Page brandaid/views/brand_rules.slim">
 <ul><li>
 <p>@header = :header</p>
+</li><li>
+<p>if <a href="'warden'">env</a>.user h1</p>
+
+<pre>a href=&quot;/#{@brand[&quot;name&quot;]}&quot; Edit #{@brand[&quot;name&quot;]}.</pre>
 </li></ul>
 
 <p>div#brandRules</p>
