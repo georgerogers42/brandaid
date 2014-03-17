@@ -152,7 +152,7 @@ module_eval(<<'.,.,', 'css.y', 9)
 
 module_eval(<<'.,.,', 'css.y', 14)
   def _reduce_3(val, _values, result)
-          result = [val[0], val[2]]
+          result = {"kind" => "font", "selectors" => val[0], "rules" => val[2]}
     
     result
   end
