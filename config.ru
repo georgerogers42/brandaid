@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require './lib/brandaid/import'
+require './lib/brandaid/require'
 
 use Rack::Session::Cookie, secret:(ENV["SECRET"] || "AGASSDTRArawtjastjksek")
 use Warden::Manager do |config|
