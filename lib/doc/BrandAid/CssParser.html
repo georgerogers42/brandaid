@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class BrandAid::TestApp - RDoc Documentation</title>
+<title>class BrandAid::CssParser - RDoc Documentation</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -61,22 +61,11 @@
   <h3>Parent</h3>
 
   
-  <p class="link">MiniTest::Test
+  <p class="link">Racc::Parser
   
 </div>
 
-    <div id="includes-section" class="nav-section">
-  <h3>Included Modules</h3>
-
-  <ul class="link-list">
-  
-  
-    <li><span class="include">Rack::Test::Methods</span>
-  
-  
-  </ul>
-</div>
-
+    
     
     <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
@@ -84,9 +73,7 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-app">#app</a>
-    
-    <li ><a href="#method-i-test_audiotech">#test_audiotech</a>
+    <li ><a href="#method-i-_reduce_none">#_reduce_none</a>
     
   </ul>
 </div>
@@ -94,9 +81,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-BrandAid::TestApp">
-  <h1 id="class-BrandAid::TestApp" class="class">
-    class BrandAid::TestApp
+<main role="main" aria-labelledby="class-BrandAid::CssParser">
+  <h1 id="class-BrandAid::CssParser" class="class">
+    class BrandAid::CssParser
   </h1>
 
   <section class="description">
@@ -112,6 +99,30 @@
     
 
     
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="Racc_arg">Racc_arg
+        
+        <dd>
+        
+      
+        <dt id="Racc_debug_parser">Racc_debug_parser
+        
+        <dd>
+        
+      
+        <dt id="Racc_token_to_s_table">Racc_token_to_s_table
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
 
     
 
@@ -122,11 +133,11 @@
        </header>
 
     
-      <div id="method-i-app" class="method-detail ">
+      <div id="method-i-_reduce_none" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">app</span><span
-            class="method-args">()</span>
+          <span class="method-name">_reduce_none</span><span
+            class="method-args">(val, _values, result)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -140,49 +151,10 @@
           
 
           
-          <div class="method-source-code" id="app-source">
-            <pre><span class="ruby-comment"># File test/001-app.rb, line 6</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">app</span>
-  <span class="ruby-constant">BrandAid</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-test_audiotech" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">test_audiotech</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="test_audiotech-source">
-            <pre><span class="ruby-comment"># File test/001-app.rb, line 9</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_audiotech</span>
-  <span class="ruby-identifier">get</span> <span class="ruby-string">&quot;/audiotech.json&quot;</span>
-  <span class="ruby-identifier">resp</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">last_response</span>.<span class="ruby-identifier">body</span>)
-  <span class="ruby-identifier">rules</span> = <span class="ruby-identifier">resp</span>[<span class="ruby-string">&quot;styles&quot;</span>][<span class="ruby-string">&quot;default&quot;</span>]
-  <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">rules</span>, []
-  <span class="ruby-identifier">get</span> <span class="ruby-string">&quot;/audiotech.css&quot;</span>
-  <span class="ruby-identifier">css</span> = <span class="ruby-identifier">last_response</span>.<span class="ruby-identifier">body</span>
-  <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">BrandAid</span><span class="ruby-operator">::</span><span class="ruby-constant">Css</span>.<span class="ruby-identifier">rules</span>(<span class="ruby-identifier">rules</span>), <span class="ruby-identifier">css</span>
+          <div class="method-source-code" id="_reduce_none-source">
+            <pre><span class="ruby-comment"># File brandaid/css.tab.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_reduce_none</span>(<span class="ruby-identifier">val</span>, <span class="ruby-identifier">_values</span>, <span class="ruby-identifier">result</span>)
+  <span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
           

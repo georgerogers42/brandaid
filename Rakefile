@@ -1,10 +1,16 @@
 require 'bundler/setup'
 require 'fileutils'
-task 'test' => ['racc', 'uglify'] do
+task 'test' => ['racc', 'doc', 'uglify'] do
   sh 'prove'
 end
 
 task 'build' => ['test']
+
+task 'doc' => ['racc'] do
+  Dir.chdir "lib" do
+    sh "rdoc -x public -x doc"
+  end
+end
 
 task 'coffee' do
   Dir.glob "coffee/*.js" do |file|

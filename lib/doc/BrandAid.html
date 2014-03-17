@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class TestFoo - RDoc Documentation</title>
+<title>module BrandAid - RDoc Documentation</title>
 
 <link href="./fonts.css" rel="stylesheet">
 <link href="./rdoc.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="./js/darkfish.js"></script>
 
 
-<body id="top" role="document" class="class">
+<body id="top" role="document" class="module">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
@@ -57,14 +57,7 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
-  <h3>Parent</h3>
-
-  
-  <p class="link">Minitest::Test
-  
-</div>
-
+    
     
     
     <!-- Method Quickref -->
@@ -73,7 +66,7 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-test_foo">#test_foo</a>
+    <li ><a href="#method-i-session">#session</a>
     
   </ul>
 </div>
@@ -81,9 +74,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-TestFoo">
-  <h1 id="class-TestFoo" class="class">
-    class TestFoo
+<main role="main" aria-labelledby="module-BrandAid">
+  <h1 id="module-BrandAid" class="module">
+    module BrandAid
   </h1>
 
   <section class="description">
@@ -109,10 +102,10 @@
        </header>
 
     
-      <div id="method-i-test_foo" class="method-detail ">
+      <div id="method-i-session" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">test_foo</span><span
+          <span class="method-name">session</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -127,10 +120,14 @@
           
 
           
-          <div class="method-source-code" id="test_foo-source">
-            <pre><span class="ruby-comment"># File test/002-login.rb, line 2</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_foo</span>
-  <span class="ruby-identifier">assert</span> <span class="ruby-keyword">true</span>
+          <div class="method-source-code" id="session-source">
+            <pre><span class="ruby-comment"># File brandaid/model.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">session</span>
+  <span class="ruby-identifier">url</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;MONGOHQ_URL&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;mongodb://localhost:27017/brandaid&quot;</span>)
+  <span class="ruby-identifier">sess</span> = <span class="ruby-constant">Moped</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span>.<span class="ruby-identifier">new</span>([<span class="ruby-node">&quot;#{url.host}:#{url.port}&quot;</span>])
+  <span class="ruby-identifier">sess</span>.<span class="ruby-identifier">use</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">path</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;/&#39;</span>, <span class="ruby-string">&#39;&#39;</span>))
+  <span class="ruby-identifier">sess</span>.<span class="ruby-identifier">login</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">user</span>, <span class="ruby-identifier">url</span>.<span class="ruby-identifier">password</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">password</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">sess</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

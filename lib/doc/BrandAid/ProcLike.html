@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class BrandAid::TestCss - RDoc Documentation</title>
+<title>module BrandAid::ProcLike - RDoc Documentation</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="../js/darkfish.js"></script>
 
 
-<body id="top" role="document" class="class">
+<body id="top" role="document" class="module">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
@@ -57,14 +57,7 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
-  <h3>Parent</h3>
-
-  
-  <p class="link">MiniTest::Test
-  
-</div>
-
+    
     
     
     <!-- Method Quickref -->
@@ -73,7 +66,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-test_rules">#test_rules</a>
+    <li class="calls-super" ><a href="#method-c-included">::included</a>
+    
+    <li ><a href="#method-i-to_proc">#to_proc</a>
     
   </ul>
 </div>
@@ -81,9 +76,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-BrandAid::TestCss">
-  <h1 id="class-BrandAid::TestCss" class="class">
-    class BrandAid::TestCss
+<main role="main" aria-labelledby="module-BrandAid::ProcLike">
+  <h1 id="module-BrandAid::ProcLike" class="module">
+    module BrandAid::ProcLike
   </h1>
 
   <section class="description">
@@ -103,16 +98,65 @@
     
 
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-included" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">included</span><span
+            class="method-args">(m)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="included-source">
+            <pre><span class="ruby-comment"># File brandaid/model.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span> <span class="ruby-identifier">m</span>
+  <span class="ruby-keyword">super</span>
+  <span class="ruby-identifier">m</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword">do</span> 
+    <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:[]</span>, <span class="ruby-value">:call</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
     
-      <div id="method-i-test_rules" class="method-detail ">
+      <div id="method-i-to_proc" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">test_rules</span><span
+          <span class="method-name">to_proc</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -127,16 +171,11 @@
           
 
           
-          <div class="method-source-code" id="test_rules-source">
-            <pre><span class="ruby-comment"># File test/001-css.rb, line 3</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rules</span>
-    <span class="ruby-identifier">rules</span> = [{<span class="ruby-string">&quot;kind&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;font&quot;</span>, <span class="ruby-string">&quot;selectors&quot;</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;.primary&quot;</span>], <span class="ruby-string">&quot;rules&quot;</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">&quot;font-family&quot;</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&#39;&quot;Helvetica&quot;&#39;</span>, <span class="ruby-string">&#39;&quot;Arial&quot;&#39;</span>, <span class="ruby-string">&#39;&quot;Droid Sans&quot;&#39;</span>, <span class="ruby-string">&#39;sans-serif&#39;</span>]}}]
-    <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">BrandAid</span><span class="ruby-operator">::</span><span class="ruby-constant">Css</span>.<span class="ruby-identifier">rules</span>(<span class="ruby-identifier">rules</span>), <span class="ruby-value">&lt;&lt;&quot;foo&quot;
-.primary {
-\tfont-family: &quot;Helvetica&quot;, &quot;Arial&quot;, &quot;Droid Sans&quot;, sans-serif;
-}
-foo</span>
-  <span class="ruby-keyword">end</span></pre>
+          <div class="method-source-code" id="to_proc-source">
+            <pre><span class="ruby-comment"># File brandaid/model.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_proc</span>
+  <span class="ruby-identifier">method</span>(<span class="ruby-value">:call</span>).<span class="ruby-identifier">to_proc</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

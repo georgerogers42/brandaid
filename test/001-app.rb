@@ -1,6 +1,6 @@
 require 'rack/test'
 require 'json'
-require 'brandaid/require'
+require 'brandaid'
 class BrandAid::TestApp < MiniTest::Test
   include Rack::Test::Methods
   def app

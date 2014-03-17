@@ -1,7 +1,7 @@
 require 'moped'
 module BrandAid
   extend self
-  def Session
+  def session
     url = URI.parse(ENV['MONGOHQ_URL'] || "mongodb://localhost:27017/brandaid")
     sess = Moped::Session.new(["#{url.host}:#{url.port}"])
     sess.use(url.path.sub('/', ''))
@@ -26,8 +26,10 @@ module BrandAid
       res = items["selectors"].map do |rule|
         if rule.is_a? Array
           rule.join " "
-        else
+        elsif rule.is_a? String
           rule
+        else
+          throw ArgumentError
         end
       end.join(", ") + " {\n"
       res += items["rules"].to_a.map do |p|
@@ -60,7 +62,7 @@ module BrandAid
     def call t
       t.map do |r|
         rule r
-      end
+      end.join("")
     end
     include ProcLike
     alias_method :rules, :call
@@ -68,7 +70,7 @@ module BrandAid
   module ModelHelpers
     private
     def session
-      @session ||= BrandAid.Session
+      @session ||= BrandAid.session
     end
     def get_brand name
       @brand = session[:brands].find(name: name).first

@@ -47,7 +47,7 @@ module BrandAid
     user['_id']
   end
   Warden::Manager.serialize_from_session do |info|
-    user = BrandAid.Session[:users].find(_id: info)
+    user = BrandAid.session[:users].find(_id: info)
   end
   Warden::Strategies.add :password do
     def valid?
@@ -56,7 +56,7 @@ module BrandAid
     def authenticate!
       user = params['user']
       pass = params['pass']
-      session = BrandAid.Session
+      session = BrandAid.session
       u = session[:users].find(user: user.downcase).first
       if !u.nil? && Auth.digest(user, pass, u["salt"]) == u["pass"]
         success!(u)

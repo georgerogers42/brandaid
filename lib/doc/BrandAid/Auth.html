@@ -123,7 +123,7 @@
 
           
           <div class="method-source-code" id="digest-source">
-            <pre><span class="ruby-comment"># File lib/brandaid/warden.rb, line 42</span>
+            <pre><span class="ruby-comment"># File brandaid/warden.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">digest</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salter</span>
   <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA512</span>.<span class="ruby-identifier">base64digest</span>(<span class="ruby-identifier">salt</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salter</span>))
 <span class="ruby-keyword">end</span></pre>
@@ -156,7 +156,7 @@
 
           
           <div class="method-source-code" id="salt-source">
-            <pre><span class="ruby-comment"># File lib/brandaid/warden.rb, line 39</span>
+            <pre><span class="ruby-comment"># File brandaid/warden.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">salt</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salter</span>
   (<span class="ruby-identifier">salter</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">pass</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">pass</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">salter</span>.<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
