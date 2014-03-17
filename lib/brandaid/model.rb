@@ -73,6 +73,7 @@ module BrandAid
     def create_brand name
       brand = {
         name: name,
+        styles: { default: [] }
       }
       BrandAid.Session[:brands].insert(brand)
     end
