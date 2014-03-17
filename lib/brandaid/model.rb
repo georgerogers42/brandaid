@@ -75,7 +75,7 @@ module BrandAid
         name: name,
         styles: { default: [] }
       }
-      BrandAid.Session[:brands].insert(brand)
+      session[:brands].insert(brand)
     end
   end
 end
