@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class BrandAid::CssParser - RDoc Documentation</title>
+<title>module BrandAid::Auth - RDoc Documentation</title>
 
 <link href="../fonts.css" rel="stylesheet">
 <link href="../rdoc.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="../js/darkfish.js"></script>
 
 
-<body id="top" role="document" class="class">
+<body id="top" role="document" class="module">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
@@ -57,14 +57,7 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
-  <h3>Parent</h3>
-
-  
-  <p class="link">Racc::Parser
-  
-</div>
-
+    
     
     
     <!-- Method Quickref -->
@@ -73,7 +66,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-_reduce_none">#_reduce_none</a>
+    <li ><a href="#method-i-digest">#digest</a>
+    
+    <li ><a href="#method-i-salt">#salt</a>
     
   </ul>
 </div>
@@ -81,9 +76,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-BrandAid::CssParser">
-  <h1 id="class-BrandAid::CssParser" class="class">
-    class BrandAid::CssParser
+<main role="main" aria-labelledby="module-BrandAid::Auth">
+  <h1 id="module-BrandAid::Auth" class="module">
+    module BrandAid::Auth
   </h1>
 
   <section class="description">
@@ -99,30 +94,6 @@
     
 
     
-    <section class="constants-list">
-      <header>
-        <h3>Constants</h3>
-      </header>
-      <dl>
-      
-        <dt id="Racc_arg">Racc_arg
-        
-        <dd>
-        
-      
-        <dt id="Racc_debug_parser">Racc_debug_parser
-        
-        <dd>
-        
-      
-        <dt id="Racc_token_to_s_table">Racc_token_to_s_table
-        
-        <dd>
-        
-      
-      </dl>
-    </section>
-    
 
     
 
@@ -133,11 +104,11 @@
        </header>
 
     
-      <div id="method-i-_reduce_none" class="method-detail ">
+      <div id="method-i-digest" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">_reduce_none</span><span
-            class="method-args">(val, _values, result)</span>
+          <span class="method-name">digest</span><span
+            class="method-args">(user, pass, salter)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -151,10 +122,43 @@
           
 
           
-          <div class="method-source-code" id="_reduce_none-source">
-            <pre><span class="ruby-comment"># File brandaid/css.tab.rb, line 217</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">_reduce_none</span>(<span class="ruby-identifier">val</span>, <span class="ruby-identifier">_values</span>, <span class="ruby-identifier">result</span>)
-  <span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>]
+          <div class="method-source-code" id="digest-source">
+            <pre><span class="ruby-comment"># File lib/brandaid/warden.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">digest</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salter</span>
+  <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA512</span>.<span class="ruby-identifier">base64digest</span>(<span class="ruby-identifier">salt</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salter</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-salt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">salt</span><span
+            class="method-args">(user, pass, salter)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="salt-source">
+            <pre><span class="ruby-comment"># File lib/brandaid/warden.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">salt</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salter</span>
+  (<span class="ruby-identifier">salter</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">pass</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">pass</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">salter</span>.<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -9,10 +9,12 @@ module BrandAid
     return sess
   end
   module ProcLike
-    def call *args
+    def self.included m
       super
+      m.class_eval do 
+        alias_method :[], :call
+      end
     end
-    alias_method :[], :call
     def to_proc
       method(:call).to_proc
     end
@@ -20,7 +22,6 @@ module BrandAid
 
   module Css
     extend self
-    include ProcLike
     def rule items
       res = items["selectors"].map do |rule|
         if rule.is_a? Array
@@ -48,11 +49,11 @@ module BrandAid
     rescue => e
       e
     end
+    include ProcLike
     alias_method :rules, :call
   end
   module Page
     extend self
-    include ProcLike
     def rule r
       RDiscount.new(r["text"].to_s).to_html
     end
@@ -61,6 +62,7 @@ module BrandAid
         rule r
       end
     end
+    include ProcLike
     alias_method :rules, :call
   end
   module ModelHelpers

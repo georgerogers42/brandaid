@@ -127,7 +127,7 @@
 
           
           <div class="method-source-code" id="create_brand-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/brandaid/model.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create_brand</span> <span class="ruby-identifier">name</span>
   <span class="ruby-identifier">brand</span> = {
     <span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>,
@@ -164,7 +164,7 @@
 
           
           <div class="method-source-code" id="get_brand-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 67</span>
+            <pre><span class="ruby-comment"># File lib/brandaid/model.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_brand</span> <span class="ruby-identifier">name</span>
   <span class="ruby-ivar">@brand</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:brands</span>].<span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>).<span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>
@@ -197,7 +197,7 @@
 
           
           <div class="method-source-code" id="put_brand-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/brandaid/model.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">put_brand</span> <span class="ruby-identifier">name</span>
   <span class="ruby-identifier">session</span>[<span class="ruby-value">:brands</span>].<span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>).<span class="ruby-identifier">update</span>(<span class="ruby-ivar">@brand</span>) 
 <span class="ruby-keyword">end</span></pre>
@@ -230,7 +230,7 @@
 
           
           <div class="method-source-code" id="session-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 64</span>
+            <pre><span class="ruby-comment"># File lib/brandaid/model.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">session</span>
   <span class="ruby-ivar">@session</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">BrandAid</span>.<span class="ruby-constant">Session</span>
 <span class="ruby-keyword">end</span></pre>

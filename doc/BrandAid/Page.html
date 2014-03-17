@@ -58,7 +58,18 @@
   <div id="class-metadata">
     
     
-    
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="ProcLike.html">BrandAid::ProcLike</a>
+  
+  
+  </ul>
+</div>
+
     
     <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
@@ -66,15 +77,11 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-5B-5D">#[]</a>
-    
     <li ><a href="#method-i-call">#call</a>
     
     <li ><a href="#method-i-rule">#rule</a>
     
     <li ><a href="#method-i-rules">#rules</a>
-    
-    <li ><a href="#method-i-to_proc">#to_proc</a>
     
   </ul>
 </div>
@@ -110,34 +117,6 @@
        </header>
 
     
-      <div id="method-i-5B-5D" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">[]</span><span
-            class="method-args">(t)</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="Page.html#method-i-call">call</a>
-        </div>
-        
-      </div>
-
-    
       <div id="method-i-call" class="method-detail ">
         
         <div class="method-heading">
@@ -157,7 +136,7 @@
 
           
           <div class="method-source-code" id="call-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/brandaid/model.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">call</span> <span class="ruby-identifier">t</span>
   <span class="ruby-identifier">t</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">rule</span> <span class="ruby-identifier">r</span>
@@ -169,7 +148,7 @@
 
         
         <div class="aliases">
-          Also aliased as: <a href="Page.html#method-i-rules">rules</a>, <a href="Page.html#method-i-5B-5D">[]</a>
+          Also aliased as: <a href="Page.html#method-i-rules">rules</a>
         </div>
         
 
@@ -196,7 +175,7 @@
 
           
           <div class="method-source-code" id="rule-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 48</span>
+            <pre><span class="ruby-comment"># File lib/brandaid/model.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">rule</span> <span class="ruby-identifier">r</span>
   <span class="ruby-constant">RDiscount</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">r</span>[<span class="ruby-string">&quot;text&quot;</span>].<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">to_html</span>
 <span class="ruby-keyword">end</span></pre>
@@ -234,39 +213,6 @@
         <div class="aliases">
           Alias for: <a href="Page.html#method-i-call">call</a>
         </div>
-        
-      </div>
-
-    
-      <div id="method-i-to_proc" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">to_proc</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="to_proc-source">
-            <pre><span class="ruby-comment"># File brandaid/model.rb, line 58</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_proc</span>
-  <span class="ruby-identifier">method</span>(<span class="ruby-value">:call</span>).<span class="ruby-identifier">to_proc</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
         
       </div>
 
