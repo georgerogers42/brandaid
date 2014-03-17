@@ -8,8 +8,19 @@ module BrandAid
     sess.login(url.user, url.password) if url.user && url.password
     return sess
   end
+  module ProcLike
+    def call *args
+      super
+    end
+    alias_method :[], :call
+    def to_proc
+      method(:call).to_proc
+    end
+  end
+
   module Css
     extend self
+    include ProcLike
     def rule items
       res = items["selectors"].map do |rule|
         if rule.is_a? Array
@@ -37,14 +48,11 @@ module BrandAid
     rescue => e
       e
     end
-    alias_method :[], :call
     alias_method :rules, :call
-    def to_proc
-      method(:call).to_proc
-    end
   end
   module Page
     extend self
+    include ProcLike
     def rule r
       RDiscount.new(r["text"].to_s).to_html
     end
@@ -54,10 +62,6 @@ module BrandAid
       end
     end
     alias_method :rules, :call
-    alias_method :[], :call
-    def to_proc
-      method(:call).to_proc
-    end
   end
   module ModelHelpers
     private
