@@ -1,13 +1,21 @@
 require 'bundler/setup'
 require 'fileutils'
-require 'closure-compiler'
-task 'test' => ['racc', 'uglify'] do
+task 'test' => ['racc', 'doc', 'uglify'] do
   sh 'prove'
 end
 
-task 'default' => ['test']
+task 'build' => ['test']
+
+task 'doc' => ['racc'] do
+  Dir.chdir "lib" do
+    sh "rdoc -x public -x doc"
+  end
+end
 
 task 'coffee' do
+  Dir.glob "coffee/*.js" do |file|
+    FileUtils.cp file, "js/src"
+  end
   sh "coffee -o js/src -c coffee"
 end
 
@@ -21,7 +29,7 @@ task 'uglify' => ['coffee'] do
    files = Dir.glob("src/*.js").map(&File.method(:expand_path))
   end
   files.each do |file|
-    system "uglifyjs --source-map js/#{File.basename file}.map -o js/#{File.basename file}.min.js js/src/#{File.basename(file)}"
+    sh "uglifyjs -o js/#{File.basename file}.min.js js/src/#{File.basename(file)}"
     FileUtils.cp "js/#{File.basename file}.min.js", "lib/brandaid/public/js"
     FileUtils.cp "js/#{File.basename file}.map", "lib/brandaid/public/js/js"
   end

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>css.output - RDoc Documentation</title>
+
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../brandaid/css_output.html">css.output</a>
+  
+    <li><a href="../brandaid/views/brand_slim.html">brand.slim</a>
+  
+    <li><a href="../brandaid/views/brand_rules_slim.html">brand_rules.slim</a>
+  
+    <li><a href="../brandaid/views/brand_rules_slim~.html">brand_rules.slim~</a>
+  
+    <li><a href="../brandaid/views/footer_slim.html">footer.slim</a>
+  
+    <li><a href="../brandaid/views/header_slim.html">header.slim</a>
+  
+    <li><a href="../brandaid/views/header_slim~.html">header.slim~</a>
+  
+    <li><a href="../brandaid/views/index_slim.html">index.slim</a>
+  
+    <li><a href="../brandaid/views/layout_slim.html">layout.slim</a>
+  
+    <li><a href="../brandaid/views/login_slim.html">login.slim</a>
+  
+    <li><a href="../brandaid/views/signup_slim.html">signup.slim</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page brandaid/css.output">
+
+<p>rule 0 ($start) never reduced rule 2 (rulesets) never reduced useless
+nonterminal $start useless nonterminal rulesets</p>
+
+<p>——– Grammar ——–</p>
+
+<p>rule 1 @1:  rule 2 rulesets: ruleset rulesets @1 “” rule 3 ruleset: words
+“{” rules “}” rule 4 words: WORD rule 5 words: words “,” WORD rule 6 rule:
+WORD “:” words “;” rule 7 rules: rules rule rule 8 rules: “”</p>
+
+<p>——- Symbols ——-</p>
+
+<p>**Nonterminals, with rules where they appear</p>
+
+<pre>$start (9)
+  on right: 
+  on left : 
+rulesets (10)
+  on right: 2
+  on left : 2
+ruleset (11)
+  on right: 2
+  on left : 3
+@1 (12)
+  on right: 2
+  on left : 1
+words (13)
+  on right: 3 5 6
+  on left : 4 5
+rules (14)
+  on right: 3 7
+  on left : 7 8
+rule (15)
+  on right: 7
+  on left : 6</pre>
+
+<p>**Terminals, with rules where they appear</p>
+
+<pre>$end (0) 
+error (1) 
+&quot;&quot; (2) 2 8
+&quot;{&quot; (3) 3
+&quot;}&quot; (4) 3
+WORD (5) 4 5 6
+&quot;,&quot; (6) 5
+&quot;:&quot; (7) 6
+&quot;;&quot; (8) 6</pre>
+
+<p>——— State ———</p>
+
+<p>state 0</p>
+
+<pre>WORD          shift, and go to state 4
+
+rulesets      go to state 1
+ruleset       go to state 2
+words         go to state 3</pre>
+
+<p>state 1</p>
+
+<pre>$end          shift, and go to state 5</pre>
+
+<p>state 2</p>
+
+<pre> 2) rulesets : ruleset _ rulesets @1 &quot;&quot;
+
+WORD          shift, and go to state 4
+
+ruleset       go to state 2
+rulesets      go to state 6
+words         go to state 3</pre>
+
+<p>state 3</p>
+
+<pre> 3) ruleset : words _ &quot;{&quot; rules &quot;}&quot;
+ 5) words : words _ &quot;,&quot; WORD
+
+&quot;{&quot;           shift, and go to state 7
+&quot;,&quot;           shift, and go to state 8</pre>
+
+<p>state 4</p>
+
+<pre> 4) words : WORD _
+
+$default      reduce using rule 4 (words)</pre>
+
+<p>state 5</p>
+
+<pre>$end          shift, and go to state 9</pre>
+
+<p>state 6</p>
+
+<pre> 2) rulesets : ruleset rulesets _ @1 &quot;&quot;
+
+$default      reduce using rule 1 (@1)
+
+@1            go to state 10</pre>
+
+<p>state 7</p>
+
+<pre> 3) ruleset : words &quot;{&quot; _ rules &quot;}&quot;
+
+&quot;&quot;            shift, and go to state 12
+
+rules         go to state 11</pre>
+
+<p>state 8</p>
+
+<pre> 5) words : words &quot;,&quot; _ WORD
+
+WORD          shift, and go to state 13</pre>
+
+<p>state 9</p>
+
+<pre>$default      accept</pre>
+
+<p>state 10</p>
+
+<pre> 2) rulesets : ruleset rulesets @1 _ &quot;&quot;
+
+&quot;&quot;            shift, and go to state 14</pre>
+
+<p>state 11</p>
+
+<pre> 3) ruleset : words &quot;{&quot; rules _ &quot;}&quot;
+ 7) rules : rules _ rule
+
+&quot;}&quot;           shift, and go to state 15
+WORD          shift, and go to state 16
+
+rule          go to state 17</pre>
+
+<p>state 12</p>
+
+<pre> 8) rules : &quot;&quot; _
+
+$default      reduce using rule 8 (rules)</pre>
+
+<p>state 13</p>
+
+<pre> 5) words : words &quot;,&quot; WORD _
+
+$default      reduce using rule 5 (words)</pre>
+
+<p>state 14</p>
+
+<pre> 2) rulesets : ruleset rulesets @1 &quot;&quot; _
+
+$default      reduce using rule 2 (rulesets)</pre>
+
+<p>state 15</p>
+
+<pre> 3) ruleset : words &quot;{&quot; rules &quot;}&quot; _
+
+$default      reduce using rule 3 (ruleset)</pre>
+
+<p>state 16</p>
+
+<pre> 6) rule : WORD _ &quot;:&quot; words &quot;;&quot;
+
+&quot;:&quot;           shift, and go to state 18</pre>
+
+<p>state 17</p>
+
+<pre> 7) rules : rules rule _
+
+$default      reduce using rule 7 (rules)</pre>
+
+<p>state 18</p>
+
+<pre> 6) rule : WORD &quot;:&quot; _ words &quot;;&quot;
+
+WORD          shift, and go to state 4
+
+words         go to state 19</pre>
+
+<p>state 19</p>
+
+<pre> 5) words : words _ &quot;,&quot; WORD
+ 6) rule : WORD &quot;:&quot; words _ &quot;;&quot;
+
+&quot;,&quot;           shift, and go to state 8
+&quot;;&quot;           shift, and go to state 20</pre>
+
+<p>state 20</p>
+
+<pre> 6) rule : WORD &quot;:&quot; words &quot;;&quot; _
+
+$default      reduce using rule 6 (rule)</pre>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

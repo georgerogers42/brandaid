@@ -12,7 +12,7 @@ rulesets :
 
 ruleset :
     words '{' rs '}' {
-      result = [val[0], val[2]]
+      result = {"kind" => "font", "selectors" => val[0], "rules" => val[2]}
     }
 
 word :

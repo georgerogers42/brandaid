@@ -6,16 +6,12 @@ class BrandAid::CssParserTest < Minitest::Test
   font-family: "Times New Roman", serif;
   color: red;
 }
-.baz {
-  font-family: 'Arial', sans-serif;
-  color: #00ff00;
+.quux {
+  color: green;
 }
 END
     assert_equal a, [
-        [[".foo", "div.bar #baz"], [['font-family', ['"Times New Roman"', 'serif']], ['color', ['red']]]],
-        [[".baz"], [['font-family', ["'Arial'", "sans-serif"]], ['color', ["#00ff00"]]]]
+        {"kind" => "font", "selectors" => [".foo", "div.bar #baz"], "rules" => [['font-family', ['"Times New Roman"', 'serif']], ['color', ['red']]]}, {"kind" => "font", "selectors" => [".quux"], "rules" => [["color", ["green"]]]}
     ]
-
-
   end
 end
